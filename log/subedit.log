@@ -1,0 +1,336 @@
+2025-09-10 01:37:51.472 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 01:37:51.472 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:37:51.472 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o "output/Ao no Hako 18.mkv" --no-subtitles "Ao no Hako 18.mkv"
+2025-09-10 01:37:51.504 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+Erro: O arquivo '"Ao no Hako 18.mkv"' não pôde ser aberto para leitura: open file error.
+
+2025-09-10 01:40:12.018 | INFO     | subedit.subedit:subtitle_remove_file:33 - [1/1] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:40:12.019 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o "output/Ao no Hako 18.mkv" --no-subtitles "Ao no Hako 18.mkv"
+2025-09-10 01:41:05.751 | INFO     | subedit.subedit:subtitle_remove_file:33 - [1/1] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:41:05.752 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o "output/Ao no Hako 18.mkv" --no-subtitles "Ao no Hako 18.mkv"
+2025-09-10 01:41:36.810 | INFO     | subedit.subedit:subtitle_remove_task:27 - mkvmerge v94.0 ('Initiate') 64-bit
+Erro: O arquivo '"Ao no Hako 18.mkv"' não pôde ser aberto para leitura: open file error.
+
+2025-09-10 01:46:02.851 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:46:02.852 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ao no Hako 18.mkv --no-subtitles Ao no Hako 18.mkv
+2025-09-10 01:46:03.466 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ao no Hako 18.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ao no Hako 18.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ao no Hako 18.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AC-3'.
+O arquivo 'output/Ao no Hako 18.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 88%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 01:47:14.288 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:47:14.288 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ao no Hako 18.mkv --no-subtitles Ao no Hako 18.mkv
+2025-09-10 01:47:17.474 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ao no Hako 18.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ao no Hako 18.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ao no Hako 18.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AC-3'.
+O arquivo 'output/Ao no Hako 18.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 88%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 3 segundos.
+
+2025-09-10 01:51:48.777 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 01:51:48.777 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/4] removing subtitle from file "Ao no Hako 18.mkv"
+2025-09-10 01:51:48.777 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ao no Hako 18.mkv --no-subtitles Ao no Hako 18.mkv
+2025-09-10 01:51:49.398 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ao no Hako 18.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ao no Hako 18.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ao no Hako 18.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AC-3'.
+O arquivo 'output/Ao no Hako 18.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 87%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 01:51:49.398 | INFO     | subedit.subedit:subtitle_remove_file:31 - [2/4] removing subtitle from file "Ballpark de Tsukamaete 10.mkv"
+2025-09-10 01:51:49.398 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ballpark de Tsukamaete 10.mkv --no-subtitles Ballpark de Tsukamaete 10.mkv
+2025-09-10 01:51:51.666 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ballpark de Tsukamaete 10.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ballpark de Tsukamaete 10.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ballpark de Tsukamaete 10.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ballpark de Tsukamaete 10.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 29%Progresso: 69%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 2 segundos.
+
+2025-09-10 01:51:51.667 | INFO     | subedit.subedit:subtitle_remove_file:31 - [3/4] removing subtitle from file "Ballpark de Tsukamaete 11.mkv"
+2025-09-10 01:51:51.667 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ballpark de Tsukamaete 11.mkv --no-subtitles Ballpark de Tsukamaete 11.mkv
+2025-09-10 01:51:52.268 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ballpark de Tsukamaete 11.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ballpark de Tsukamaete 11.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ballpark de Tsukamaete 11.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ballpark de Tsukamaete 11.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 95%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 01:51:52.268 | INFO     | subedit.subedit:subtitle_remove_file:31 - [4/4] removing subtitle from file "Ballpark de Tsukamaete 12.mkv"
+2025-09-10 01:51:52.268 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ballpark de Tsukamaete 12.mkv --no-subtitles Ballpark de Tsukamaete 12.mkv
+2025-09-10 01:51:53.197 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ballpark de Tsukamaete 12.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ballpark de Tsukamaete 12.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ballpark de Tsukamaete 12.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ballpark de Tsukamaete 12.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 70%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:02:01.466 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 02:02:01.466 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "Ballpark de Tsukamaete 10.mkv"
+2025-09-10 02:02:01.466 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ballpark de Tsukamaete 10.mkv --no-subtitles Ballpark de Tsukamaete 10.mkv
+2025-09-10 02:02:01.938 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ballpark de Tsukamaete 10.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ballpark de Tsukamaete 10.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ballpark de Tsukamaete 10.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ballpark de Tsukamaete 10.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 0 segundo.
+
+2025-09-10 02:28:14.002 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 02:28:14.002 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 1/17] removing subtitle from file "Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv"
+2025-09-10 02:28:14.002 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv --no-subtitles Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv
+2025-09-10 02:28:15.115 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ore wa Seikan Kokka no Akutoku Ryoushu 10.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 50%Progresso: 98%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:15.115 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 2/17] removing subtitle from file "Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv"
+2025-09-10 02:28:15.115 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv --no-subtitles Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv
+2025-09-10 02:28:15.859 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ore wa Seikan Kokka no Akutoku Ryoushu 11.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 76%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:15.859 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 3/17] removing subtitle from file "Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv"
+2025-09-10 02:28:15.860 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv --no-subtitles Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv
+2025-09-10 02:28:16.300 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ore wa Seikan Kokka no Akutoku Ryoushu 12.mkv' foi criado para escrita.
+Progresso: 1%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 0 segundo.
+
+2025-09-10 02:28:16.300 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 4/17] removing subtitle from file "Summer Pockets 10.mkv"
+2025-09-10 02:28:16.301 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 10.mkv --no-subtitles Summer Pockets 10.mkv
+2025-09-10 02:28:16.850 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 10.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 10.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 10.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 10.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:16.850 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 5/17] removing subtitle from file "Summer Pockets 11.mkv"
+2025-09-10 02:28:16.851 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 11.mkv --no-subtitles Summer Pockets 11.mkv
+2025-09-10 02:28:17.393 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 11.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 11.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 11.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 11.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:17.393 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 6/17] removing subtitle from file "Summer Pockets 12.mkv"
+2025-09-10 02:28:17.393 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 12.mkv --no-subtitles Summer Pockets 12.mkv
+2025-09-10 02:28:18.012 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 12.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 12.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 12.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 12.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 83%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:18.012 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 7/17] removing subtitle from file "Summer Pockets 13.mkv"
+2025-09-10 02:28:18.012 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 13.mkv --no-subtitles Summer Pockets 13.mkv
+2025-09-10 02:28:26.162 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 13.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 13.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 13.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 13.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 22%Progresso: 29%Progresso: 39%Progresso: 43%Progresso: 47%Progresso: 51%Progresso: 62%Progresso: 63%Progresso: 67%Progresso: 76%Progresso: 78%Progresso: 85%Progresso: 89%Progresso: 94%Progresso: 97%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 8 segundos.
+
+2025-09-10 02:28:26.162 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 8/17] removing subtitle from file "Summer Pockets 14.mkv"
+2025-09-10 02:28:26.162 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 14.mkv --no-subtitles Summer Pockets 14.mkv
+2025-09-10 02:28:33.610 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 14.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 14.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 14.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 14.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 1%Progresso: 5%Progresso: 9%Progresso: 10%Progresso: 12%Progresso: 17%Progresso: 24%Progresso: 52%Progresso: 91%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 7 segundos.
+
+2025-09-10 02:28:33.610 | INFO     | subedit.subedit:subtitle_remove_file:31 - [ 9/17] removing subtitle from file "Summer Pockets 15.mkv"
+2025-09-10 02:28:33.611 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 15.mkv --no-subtitles Summer Pockets 15.mkv
+2025-09-10 02:28:35.521 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 15.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 15.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 15.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 15.mkv' foi criado para escrita.
+Progresso: 1%Progresso: 39%Progresso: 77%Progresso: 91%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 2 segundos.
+
+2025-09-10 02:28:35.521 | INFO     | subedit.subedit:subtitle_remove_file:31 - [10/17] removing subtitle from file "Summer Pockets 16.mkv"
+2025-09-10 02:28:35.521 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 16.mkv --no-subtitles Summer Pockets 16.mkv
+2025-09-10 02:28:38.492 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 16.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 16.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 16.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 16.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 14%Progresso: 36%Progresso: 53%Progresso: 74%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 3 segundos.
+
+2025-09-10 02:28:38.492 | INFO     | subedit.subedit:subtitle_remove_file:31 - [11/17] removing subtitle from file "Summer Pockets 17.mkv"
+2025-09-10 02:28:38.492 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 17.mkv --no-subtitles Summer Pockets 17.mkv
+2025-09-10 02:28:44.889 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 17.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 17.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 17.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 17.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 17%Progresso: 30%Progresso: 46%Progresso: 48%Progresso: 53%Progresso: 54%Progresso: 56%Progresso: 59%Progresso: 80%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 6 segundos.
+
+2025-09-10 02:28:44.889 | INFO     | subedit.subedit:subtitle_remove_file:31 - [12/17] removing subtitle from file "Summer Pockets 18.mkv"
+2025-09-10 02:28:44.889 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 18.mkv --no-subtitles Summer Pockets 18.mkv
+2025-09-10 02:28:46.294 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 18.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 18.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 18.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 18.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 58%Progresso: 85%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:28:46.295 | INFO     | subedit.subedit:subtitle_remove_file:31 - [13/17] removing subtitle from file "Summer Pockets 19.mkv"
+2025-09-10 02:28:46.295 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 19.mkv --no-subtitles Summer Pockets 19.mkv
+2025-09-10 02:28:50.272 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 19.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 19.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 19.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 19.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 10%Progresso: 19%Progresso: 38%Progresso: 58%Progresso: 71%Progresso: 90%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 4 segundos.
+
+2025-09-10 02:28:50.272 | INFO     | subedit.subedit:subtitle_remove_file:31 - [14/17] removing subtitle from file "Summer Pockets 20.mkv"
+2025-09-10 02:28:50.272 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 20.mkv --no-subtitles Summer Pockets 20.mkv
+2025-09-10 02:28:54.923 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 20.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 20.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 20.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 20.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 17%Progresso: 30%Progresso: 32%Progresso: 34%Progresso: 36%Progresso: 39%Progresso: 69%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 5 segundos.
+
+2025-09-10 02:28:54.923 | INFO     | subedit.subedit:subtitle_remove_file:31 - [15/17] removing subtitle from file "Summer Pockets 21.mkv"
+2025-09-10 02:28:54.923 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 21.mkv --no-subtitles Summer Pockets 21.mkv
+2025-09-10 02:29:00.319 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 21.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 21.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 21.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 21.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 38%Progresso: 55%Progresso: 74%Progresso: 75%Progresso: 77%Progresso: 78%Progresso: 79%Progresso: 81%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 5 segundos.
+
+2025-09-10 02:29:00.319 | INFO     | subedit.subedit:subtitle_remove_file:31 - [16/17] removing subtitle from file "Summer Pockets 22.mkv"
+2025-09-10 02:29:00.320 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 22.mkv --no-subtitles Summer Pockets 22.mkv
+2025-09-10 02:29:00.989 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 22.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 22.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 22.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 22.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 78%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:29:00.989 | INFO     | subedit.subedit:subtitle_remove_file:31 - [17/17] removing subtitle from file "Summer Pockets 23.mkv"
+2025-09-10 02:29:00.989 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 23.mkv --no-subtitles Summer Pockets 23.mkv
+2025-09-10 02:29:03.489 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 23.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 23.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 23.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Summer Pockets 23.mkv' foi criado para escrita.
+Progresso: 1%Progresso: 43%Progresso: 64%Progresso: 76%Progresso: 89%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 2 segundos.
+
+2025-09-10 02:38:20.398 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 02:38:20.418 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/2] removing subtitle from file "Ao no Hako 14.mkv"
+2025-09-10 02:38:20.418 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ao no Hako 14.mkv --no-subtitles Ao no Hako 14.mkv
+2025-09-10 02:38:21.518 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ao no Hako 14.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ao no Hako 14.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ao no Hako 14.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AC-3'.
+'Ao no Hako 14.mkv' faixa 2: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ao no Hako 14.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 50%Progresso: 97%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:38:21.519 | INFO     | subedit.subedit:subtitle_remove_file:31 - [2/2] removing subtitle from file "Summer Pockets 09.mkv"
+2025-09-10 02:38:21.519 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Summer Pockets 09.mkv --no-subtitles Summer Pockets 09.mkv
+2025-09-10 02:38:22.369 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Summer Pockets 09.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Summer Pockets 09.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Summer Pockets 09.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AC-3'.
+O arquivo 'output/Summer Pockets 09.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 64%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:45:15.422 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-09-10 02:45:15.422 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/2] removing subtitle from file "Isekai Mokushiroku Mynoghra 10.mkv"
+2025-09-10 02:45:15.422 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Isekai Mokushiroku Mynoghra 10.mkv --no-subtitles Isekai Mokushiroku Mynoghra 10.mkv
+2025-09-10 02:45:16.189 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Isekai Mokushiroku Mynoghra 10.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Isekai Mokushiroku Mynoghra 10.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Isekai Mokushiroku Mynoghra 10.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Isekai Mokushiroku Mynoghra 10.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 70%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-09-10 02:45:16.189 | INFO     | subedit.subedit:subtitle_remove_file:31 - [2/2] removing subtitle from file "Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv"
+2025-09-10 02:45:16.189 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv --no-subtitles Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv
+2025-09-10 02:45:16.710 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v94.0 ('Initiate') 64-bit
+'Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Ore wa Seikan Kokka no Akutoku Ryoushu 07.mkv' foi criado para escrita.
+Progresso: 1%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 0 segundo.
+
+2025-12-21 14:09:22.314 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-12-21 14:09:22.315 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "Yasei no Last Boss ga Arawareta! 09.mkv"
+2025-12-21 14:09:22.315 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/Yasei no Last Boss ga Arawareta! 09.mkv --no-subtitles Yasei no Last Boss ga Arawareta! 09.mkv
+2025-12-21 14:09:22.807 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v96.0 ('It's My Life') 64-bit
+'Yasei no Last Boss ga Arawareta! 09.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'Yasei no Last Boss ga Arawareta! 09.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'Yasei no Last Boss ga Arawareta! 09.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/Yasei no Last Boss ga Arawareta! 09.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 0 segundo.
+
+2025-12-21 15:01:02.850 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-12-21 15:01:02.850 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "original.mkv"
+2025-12-21 15:01:02.851 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/original.mkv --no-subtitles original.mkv
+2025-12-21 15:01:03.466 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v96.0 ('It's My Life') 64-bit
+'original.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'original.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'original.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/original.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 87%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-12-21 15:35:28.430 | INFO     | subedit.utils:check_output:13 - creating the output directory
+2025-12-21 15:35:28.430 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "original"
+2025-12-21 15:35:28.431 | ERROR    | subedit.subedit:subtitle_remove_file:34 - file original not found!
+2025-12-21 15:36:09.861 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "original.mkv"
+2025-12-21 15:36:09.861 | INFO     | subedit.subedit:subtitle_remove_task:23 - command: mkvmerge -o output/original.mkv --no-subtitles original.mkv
+2025-12-21 15:36:10.502 | INFO     | subedit.subedit:subtitle_remove_task:25 - mkvmerge v96.0 ('It's My Life') 64-bit
+'original.mkv': Utilizando o demultiplexador para o formato 'Matroska'.
+'original.mkv' faixa 0: Utilizando o módulo de saída para o formato 'HEVC/H.265'.
+'original.mkv' faixa 1: Utilizando o módulo de saída para o formato 'AAC'.
+O arquivo 'output/original.mkv' foi criado para escrita.
+Progresso: 0%Progresso: 83%Progresso: 100%Os registros CUE (o índice) estão sendo escritos...
+A multiplexação levou 1 segundo.
+
+2025-12-21 19:17:13.166 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "anime_title 02.mkv"
+2025-12-21 19:19:40.157 | INFO     | subedit.subedit:subtitle_remove_file:31 - [1/1] removing subtitle from file "anime_title 02.mkv"
