@@ -1,4 +1,4 @@
-from subedit.info import Attachment, SubtitleTrack, VideoTrack
+from subedit.info import Attachment, AudioTrack, SubtitleTrack, VideoTrack
 from subedit.interface import IAttachmentAdapter, ITrackAdapter
 from pytest import fixture
 from tests.data import MKVMERGE_DATA
