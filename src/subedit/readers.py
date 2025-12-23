@@ -1,0 +1,24 @@
+import json
+from subedit.interfaces import IDataReader, IDataWriter
+
+
+class JSONReader(IDataReader):
+    @staticmethod
+    def read(source: Union[str, bytes, Dict]):
+        if isinstance(source, dict):
+            return source
+        elif isinstance(source, bytes):
+            return json.loads(source.decode('utf-8'))
+        elif isinstance(source, str):
+            with open(source, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        raise ValueError("Fonte de dados desconhecida")
+
+
+class JSONWriter(IDataWriter):
+
+    @staticmethod
+    def write(file_path: str, data: dict) -> None:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+
