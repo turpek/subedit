@@ -1,10 +1,11 @@
 from subedit.interface import IAttachmentAdapter, ITrackAdapter
 
+
 class MKVMergeAttachmentAdapter(IAttachmentAdapter):
     def __init__(self, data: dict):
         super().__init__()
         self.__id = data['id']
-        self.__uid = data['properties'].get('uid')
+        self.__uid = data['properties'].get('uid', 0)
         self.__content_type = data['content_type']
         self.__file_name = data['file_name']
 
@@ -23,18 +24,18 @@ class MKVMergeAttachmentAdapter(IAttachmentAdapter):
 
 class MKVMergeTrackAdapter(ITrackAdapter):
     def __init__(self, data: dict):
-        prop = data['properties']
+        prop = data.get('properties', {})
         self.__id = data['id']
         self.__codec = data['codec']
-        self.__uid = prop['uid']
-        self.__codec_id = prop['codec_id']
-        self.__default_track = prop['default_track']
-        self.__enabled_track = prop['enabled_track']
-        self.__forced_track = prop['forced_track']
-        self.__language = prop['language']
-        self.__language_ietf = prop['language_ietf']
-        self.__number = prop['number']
-        self.__track_name = prop['track_name']
+        self.__uid = prop.get('uid', 0)
+        self.__codec_id = prop.get('codec_id', "")
+        self.__default_track = prop.get('default_track', False)
+        self.__enabled_track = prop.get('enabled_track', True)
+        self.__forced_track = prop.get('forced_track')
+        self.__language = prop.get('language', 'und')
+        self.__language_ietf = prop.get('language_ietf', 'und')
+        self.__number = prop.get('number', 0)
+        self.__track_name = prop.get('track_name', "")
         self.__type = data['type']
 
     def id(self) -> int:
