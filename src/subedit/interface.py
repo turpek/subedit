@@ -21,7 +21,7 @@ class Asset(ABC):
         ...
 
 
-class ITrack(ABC):
+class Track(ABC):
     def __init__(self):
         ...
 
@@ -142,13 +142,13 @@ class TrackAdapter(ABC):
         ...
 
 
-class IDataReader(ABC):
+class DataReader(ABC):
     @abstractmethod
     def read(self, source: Union[str, bytes, Dict]):
         ...
 
 
-class IDataWriter(ABC):
+class DataWriter(ABC):
     @abstractmethod
     def write(self, file_path: str, data):
         ...

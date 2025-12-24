@@ -1,4 +1,4 @@
-from subedit.interface import AssetAdapter, ITrack, TrackAdapter, Asset
+from subedit.interface import AssetAdapter, Track, TrackAdapter, Asset
 
 
 class Attachment(Asset):
@@ -41,7 +41,7 @@ class Track(Asset):
         return self.__file_name
 
 
-class AudioTrack(ITrack):
+class AudioTrack(Track):
     def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
@@ -89,7 +89,7 @@ class AudioTrack(ITrack):
         return self.__track_name
 
 
-class SubtitleTrack(ITrack):
+class SubtitleTrack(Track):
     def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
@@ -137,7 +137,7 @@ class SubtitleTrack(ITrack):
         return self.__track_name
 
 
-class VideoTrack(ITrack):
+class VideoTrack(Track):
     def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()

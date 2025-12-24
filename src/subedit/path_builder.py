@@ -1,7 +1,7 @@
 from pathlib3x import Path
 from subedit.custom_exceptions import UnsupportedAssetError
 from subedit.interface import Asset
-from subedit.info import Attachment, Track
+from subedit.info import Attachment, BasicTrack
 
 
 class PathBuilder:
@@ -9,7 +9,7 @@ class PathBuilder:
     @staticmethod
     def builder(asset: Asset) -> Path:
 
-        if isinstance(asset, Track):
+        if isinstance(asset, BasicTrack):
             path = Path('tracks')
         elif isinstance(asset, Attachment):
             path = Path('fonts')

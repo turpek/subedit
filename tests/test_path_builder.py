@@ -1,10 +1,10 @@
 from subedit.path_builder import PathBuilder
 from subedit.custom_exceptions import UnsupportedAssetError
-from subedit.info import Attachment, Track
+from subedit.info import Attachment, BasicTrack
 from pytest import raises
 
 
-class FakeSubtitleTrack(Track):
+class FakeSubtitleTrack(BasicTrack):
     def __init__(self):
         ...
 

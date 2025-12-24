@@ -1,9 +1,9 @@
 import json
 from typing import Union, Dict
-from subedit.interfaces import IDataReader, IDataWriter
+from subedit.interfaces import DataReader, DataWriter
 
 
-class JSONReader(IDataReader):
+class JSONReader(DataReader):
     @staticmethod
     def read(source: Union[str, bytes, Dict]):
         if isinstance(source, dict):
@@ -16,7 +16,7 @@ class JSONReader(IDataReader):
         raise ValueError("Fonte de dados desconhecida")
 
 
-class JSONWriter(IDataWriter):
+class JSONWriter(DataWriter):
     @staticmethod
     def write(file_path: str, data: dict) -> None:
         with open(file_path, 'w') as file:
