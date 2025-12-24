@@ -2,9 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Union, Dict
 
 
-class IAttachment(ABC):
-    def __init__(self):
-        ...
+class Asset(ABC):
 
     @abstractmethod
     def id(self):
@@ -72,9 +70,7 @@ class ITrack(ABC):
         ...
 
 
-class IAttachmentAdapter(ABC):
-    def __init__(self):
-        ...
+class AssetAdapter(ABC):
 
     @abstractmethod
     def id(self):
@@ -93,7 +89,7 @@ class IAttachmentAdapter(ABC):
         ...
 
 
-class ITrackAdapter(ABC):
+class TrackAdapter(ABC):
     def __init__(self):
         ...
 

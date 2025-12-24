@@ -1,0 +1,2 @@
+class UnsupportedAssetError(TypeError):
+    pass

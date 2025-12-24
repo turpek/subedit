@@ -1,8 +1,8 @@
-from subedit.interface import IAttachment, IAttachmentAdapter, ITrack, ITrackAdapter
+from subedit.interface import AssetAdapter, ITrack, TrackAdapter, Asset
 
 
-class Attachment(IAttachment):
-    def __init__(self, data: IAttachmentAdapter):
+class Attachment(Asset):
+    def __init__(self, data: AssetAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
         self.__content_type = data.content_type()
@@ -21,8 +21,28 @@ class Attachment(IAttachment):
         return self.__file_name
 
 
+class Track(Asset):
+    def __init__(self, data: TrackAdapter):
+        self.__id = data.id()
+        self.__uid = data.uid()
+        self.__content_type = data.codec_id()
+        self.__file_name = data.file_name()
+
+    def id(self) -> int:
+        return self.__id
+
+    def uid(self) -> int:
+        return self.__uid
+
+    def content_type(self) -> str:
+        return self.__content_type
+
+    def file_name(self) -> str:
+        return self.__file_name
+
+
 class AudioTrack(ITrack):
-    def __init__(self, data: ITrackAdapter):
+    def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
         self.__codec = data.codec()
@@ -70,7 +90,7 @@ class AudioTrack(ITrack):
 
 
 class SubtitleTrack(ITrack):
-    def __init__(self, data: ITrackAdapter):
+    def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
         self.__codec = data.codec()
@@ -118,7 +138,7 @@ class SubtitleTrack(ITrack):
 
 
 class VideoTrack(ITrack):
-    def __init__(self, data: ITrackAdapter):
+    def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
         self.__codec = data.codec()
