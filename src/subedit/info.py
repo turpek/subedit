@@ -21,7 +21,7 @@ class Attachment(Asset):
         return self.__file_name
 
 
-class Track(Asset):
+class BasicTrack(Asset):
     def __init__(self, data: TrackAdapter):
         self.__id = data.id()
         self.__uid = data.uid()
