@@ -1,4 +1,5 @@
 import json
+from typing import Union, Dict
 from subedit.interfaces import IDataReader, IDataWriter
 
 
@@ -16,9 +17,7 @@ class JSONReader(IDataReader):
 
 
 class JSONWriter(IDataWriter):
-
     @staticmethod
     def write(file_path: str, data: dict) -> None:
         with open(file_path, 'w') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
-
