@@ -71,15 +71,28 @@ class PathManager:
     def __init__(self, file: Path):
         self.__file = file
 
+    def __get_track_lang(self, item: ITrack):
+        return lang if (lang := item.language_ietf()) != 'und' else item.language()
+
+    def __from_track(self, item: ITrack):
+        suffix = _SUFFIX[item.codec_id()]
+        file = self.__file.stem
+        item_id = item.id()
+        name = item.track_name()
+        lang = self.__get_track_lang(item)
+        return Path(f'{item_id}_{file}_{name}({lang}){suffix}')
+
+    def __from_attachment(self, item: IAttachment):
+        return Path('fonts') / item.file_name()
+
     def path_from(self, item: Union[IAttachment, ITrack]):
         if isinstance(item, ITrack):
-            suffix = _SUFFIX[item.codec_id()]
-            file = self.__file.stem
-            item_id = item.id()
-            name = item.track_name()
-            lang = item.language_ietf()
-            if lang == 'und':
-                lang = item.language()
-            return Path(f'{item_id}_{file}_{name}({lang}){suffix}')
+            return self.__from_track(item)
         elif isinstance(item, IAttachment):
-            return Path('fonts') / item.file_name()
+            return self.__from_attachment(item)
+
+        type_name = type(item).__name__
+        raise TypeError(
+            f"Tipo inesperado '{type_name}' para geração de caminho. "
+            f"Esperado 'ITrack' ou 'IAttachment'."
+        )
