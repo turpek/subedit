@@ -1,10 +1,10 @@
 from subedit.info import Attachment, AudioTrack, SubtitleTrack, VideoTrack
-from subedit.interface import IAttachmentAdapter, ITrackAdapter
+from subedit.interface import AssetAdapter, TrackAdapter
 from pytest import fixture
 from tests.data import MKVMERGE_DATA
 
 
-class FakeAttachment(IAttachmentAdapter):
+class FakeAttachment(AssetAdapter):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -26,7 +26,7 @@ class FakeAttachment(IAttachmentAdapter):
         return self.__file_name
 
 
-class FakeTrackAdapter(ITrackAdapter):
+class FakeTrackAdapter(TrackAdapter):
     def __init__(self, data: dict):
         prop = data['properties']
         self.__id = data['id']

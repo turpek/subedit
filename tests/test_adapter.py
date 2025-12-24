@@ -1,5 +1,48 @@
-from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter
+from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter, BasicTrackAdapter
+from subedit.interface import TrackAdapter
 from pytest import fixture
+from pytest import raises
+
+
+class FakeTrackAdapter(TrackAdapter):
+    def __init__(self, data: dict):
+        ...
+
+    def id(self) -> int:
+        return 3
+
+    def uid(self) -> int:
+        return 14539514268308361919
+
+    def codec_id(self) -> str:
+        return "S_TEXT/ASS"
+
+    def track_name(self) -> str:
+        return "Brazilian_CR"
+
+    def language_ietf(self) -> str:
+        return 'pt-BR'
+
+    def codec(self) -> str:
+        ...
+
+    def default_track(self) -> bool:
+        ...
+
+    def enabled_track(self) -> bool:
+        ...
+
+    def forced_track(self) -> bool:
+        ...
+
+    def language(self) -> str:
+        ...
+
+    def number(self) -> int:
+        ...
+
+    def type(self) -> str:
+        ...
 
 
 @fixture
@@ -260,3 +303,107 @@ def test_MKVMergeTrackAdapter_type(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
     assert adapter.type() == "video"
+
+
+def test_BasicTrackAdapter_id_3():
+    track_adapter = FakeTrackAdapter({})
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.id() == 3
+
+
+def test_BasicTrackAdapter_id_diferente_1():
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.id = lambda: 1
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.id() == 1
+
+
+def test_BasicTrackAdapter_uid():
+    track_adapter = FakeTrackAdapter({})
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.uid() == 14539514268308361919
+
+
+def test_BasicTrackAdapter_uid_0():
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.uid = lambda: 0
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.uid() == 0
+
+
+def test_BasicTrackAdapter_content_type_subtitle():
+    track_adapter = FakeTrackAdapter({})
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.content_type() == "S_TEXT/ASS"
+
+
+def test_BasicTrackAdapter_content_type_video():
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.codec_id = lambda: "V_MPEG4/ISO/AVC"
+
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.content_type() == "V_MPEG4/ISO/AVC"
+
+
+def test_BasicTrackAdapter_file_name():
+    expect = "3_Brazilian_CR_pt-BR.ass"
+    track_adapter = FakeTrackAdapter({})
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_file_name_track_name_unknown():
+    expect = "3_unknown_pt-BR.ass"
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.track_name = lambda: ""
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_file_name_id_1():
+    expect = "1_Brazilian_CR_pt-BR.ass"
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.id = lambda: 1
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_language_ietf_pt_PT():
+    expect = "3_Brazilian_CR_pt-PT.ass"
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.language_ietf = lambda: "pt-PT"
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_language_ietf_und():
+    expect = "3_Brazilian_CR_und.ass"
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.language_ietf = lambda: ""
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_suffix_ass():
+    expect = "3_Brazilian_CR_pt-BR.ass"
+    track_adapter = FakeTrackAdapter({})
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_suffix_srt():
+    expect = "3_Brazilian_CR_pt-BR.srt"
+    track_adapter = FakeTrackAdapter({})
+    track_adapter.codec_id = lambda: "S_TEXT/UTF8"
+    adapter = BasicTrackAdapter(track_adapter)
+    assert adapter.file_name() == expect
+
+
+def test_BasicTrackAdapter_suffix_vazio():
+    expect = "Faixa 3 possui codec_id ausente ou vazio."
+    with raises(ValueError) as excinfo:
+        track_adapter = FakeTrackAdapter({})
+        track_adapter.codec_id = lambda: ""
+        BasicTrackAdapter(track_adapter)
+    result = str(excinfo.value)
+    assert result == expect
