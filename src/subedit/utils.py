@@ -1,11 +1,31 @@
+from enum import Enum
 from loguru import logger
 from pathlib import Path
+import logging
 
 SRC = (Path(__file__).parent / '..' / '..').resolve()
 PATH_LOG = SRC / 'log'
 SUFFIX = ['.mkv']
 
 logger.add(f"{PATH_LOG}/subedit.log", rotation="10 MB")
+
+class InterceptHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            level = logger.level(record.levelname).name
+        except ValueError:
+            level = record.levelno
+
+        logger.log(level, record.getMessage())
+
+
+def setup_logging(log_to_file: bool = True):
+    logging.basicConfig(handlers=[InterceptHandler()], level=0)
+
+    if log_to_file:
+        PATH_LOG.mkdir(parents=True, exist_ok=True)
+        logger.add(PATH_LOG / "subedit.log", rotation="10 MB", level="INFO")
+
 
 TRACKS_SUFFIX = {
     # --- VÍDEO ---
@@ -113,3 +133,10 @@ class PrettyCount:
         for i, el in enumerate(self.__list, start=self.__start):
             yield PrettyMsg(i, self.__size, self.__digits), el
 
+
+class MediaType(str, Enum):
+    ATTACHMENT = 'attachments'
+    AUDIO = 'audio'
+    VIDEO = 'video'
+    SUBTITLE = 'subtitle'
+    TRACK = 'track'

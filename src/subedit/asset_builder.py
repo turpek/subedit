@@ -1,6 +1,7 @@
 from loguru import logger
 from subedit.adapter import AssetAdapter
 from subedit.assets import Asset
+from subedit.utils import MediaType
 
 
 class MKVMergeAssetBuilder:
@@ -10,33 +11,38 @@ class MKVMergeAssetBuilder:
         self._data = data
         self._build_called = False
 
-    def build(self):
+    def __build(self, item: dict, media_type: MediaType) -> None:
+        factory = self._factories.get(media_type)
+        if not factory:
+            logger.warning(f"Media type '{media_type}' not registered")
+        else:
+            asset = factory(item)
+            self._assets.get(media_type).append(asset)
 
+    def __build_tracks(self):
+        for track_item in self._data.get('tracks', []):
+            try:
+                media_type = MediaType(track_item['type'])
+                self.__build(track_item, media_type)
+            except ValueError:
+                logger.warning(f"Unknown track type '{track_item["type"]}'")
+
+    def __build_attachments(self):
+        for attach_item in self._data.get('attachments', []):
+            media_type = MediaType.ATTACHMENT
+            self.__build(attach_item, media_type)
+
+    def build(self):
         if self._build_called:
             raise RuntimeError('AssetBuilder.build() called more than once')
 
-        for track_item in self._data.get('tracks', []):
-            type_ = track_item['type']
-            factory = self._factories.get(type_)
-            if not factory:
-                logger.warning(f"Track type '{type_}' not registered")
-                continue
-            asset = factory(track_item)
-            self._assets.get(type_).append(asset)
-
-        for attach_item in self._data.get('attachments', []):
-            factory = self._factories.get('attachments')
-            if not factory:
-                logger.warning("Attachment type 'attachments' not registered")
-                break
-            attach = factory(attach_item)
-            self._assets.get('attachments').append(attach)
-
+        self.__build_tracks()
+        self.__build_attachments()
         self._build_called = True
 
-    def register_type(self, adapter_cls: AssetAdapter, asset_cls: Asset, type_: str) -> None:
-        self._factories[type_] = lambda data: asset_cls(adapter_cls(data))
-        self._assets.setdefault(type_, [])
+    def register_type(self, adapter_cls: AssetAdapter, asset_cls: Asset, media_type: MediaType) -> None:
+        self._factories[media_type] = lambda data: asset_cls(adapter_cls(data))
+        self._assets.setdefault(media_type, [])
 
-    def get(self, type_: str):
-        return self._assets.get(type_, [])
+    def get(self, media_type: MediaType):
+        return self._assets.get(media_type, [])
