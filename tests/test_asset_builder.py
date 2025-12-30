@@ -1,3 +1,5 @@
+from io import StringIO
+from loguru import logger
 from subedit.asset_builder import MKVMergeAssetBuilder
 from subedit.utils import MediaType
 from pytest import raises
@@ -70,6 +72,21 @@ def test_MKVMergeAssetBuilder_get_audio_track_no_register():
     asset.build()
     result = len(asset.get(MediaType.AUDIO))
     assert result == expect
+
+
+def test_MKVMergeAssetBuilder_track_unknown(caplog):
+    expect = "Unknown track type 'vr'"
+
+    buffer = StringIO()
+    handler_id = logger.add(buffer, level="WARNING")
+
+    data = {'tracks': [{'type': 'vr'}]}
+    asset = MKVMergeAssetBuilder(data)
+    asset.build()
+
+    logger.remove(handler_id)
+    result = buffer.getvalue()
+    assert expect in result
 
 
 def test_MKVMergeAssetBuilder_get_attachment():
