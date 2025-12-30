@@ -1,6 +1,6 @@
 import json
 from typing import Union, Dict
-from subedit.interfaces import DataReader, DataWriter
+from subedit.interface import DataReader, DataWriter
 
 
 class JSONReader(DataReader):
