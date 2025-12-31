@@ -13,7 +13,7 @@ class MKVMergeFactory:
 
     def build(self) -> MKVMergeAssetBuilder:
         bjson = run(self.__command, stdout=PIPE)
-        data = JSONReader(bjson.stdout)
+        data = JSONReader.read(bjson.stdout)
         builder = MKVMergeAssetBuilder(data)
         builder.register_type(MKVMergeAttachmentAdapter, Attachment, MediaType.ATTACHMENT)
         builder.register_type(MKVMergeTrackAdapter, AudioTrack, MediaType.AUDIO)
