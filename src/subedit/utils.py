@@ -9,6 +9,7 @@ SUFFIX = ['.mkv']
 
 logger.add(f"{PATH_LOG}/subedit.log", rotation="10 MB")
 
+
 class InterceptHandler(logging.Handler):
     def emit(self, record):
         try:
@@ -138,5 +139,5 @@ class MediaType(str, Enum):
     ATTACHMENT = 'attachments'
     AUDIO = 'audio'
     VIDEO = 'video'
-    SUBTITLE = 'subtitle'
+    SUBTITLE = 'subtitles'
     TRACK = 'track'
