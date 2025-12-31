@@ -141,3 +141,7 @@ class MediaType(str, Enum):
     VIDEO = 'video'
     SUBTITLE = 'subtitles'
     TRACK = 'track'
+
+
+class Provider(str, Enum):
+    MKVMERGE = 'mkvmerge'
