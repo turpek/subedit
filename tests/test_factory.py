@@ -1,7 +1,7 @@
 from pathlib3x import Path
 from pytest import fixture
 from subedit.factory import Factory, MKVMergeFactory
-from subedit.utils import MediaType, Provider
+from subedit.media_enums import MediaType, Provider
 from subprocess import PIPE
 
 

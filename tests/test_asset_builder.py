@@ -1,7 +1,7 @@
 from io import StringIO
 from loguru import logger
 from subedit.asset_builder import MKVMergeAssetBuilder
-from subedit.utils import MediaType
+from subedit.media_enums import MediaType
 from pytest import raises
 
 

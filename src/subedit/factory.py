@@ -3,7 +3,8 @@ from subedit.assets import Attachment, AudioTrack, SubtitleTrack, VideoTrack
 from subedit.asset_builder import MKVMergeAssetBuilder
 from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter
 from subedit.readers import JSONReader
-from subedit.utils import MediaType, Provider
+from subedit.media_enums import MediaType
+from subedit.media_enums import Provider
 from subprocess import run, PIPE
 
 

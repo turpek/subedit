@@ -135,13 +135,4 @@ class PrettyCount:
             yield PrettyMsg(i, self.__size, self.__digits), el
 
 
-class MediaType(str, Enum):
-    ATTACHMENT = 'attachments'
-    AUDIO = 'audio'
-    VIDEO = 'video'
-    SUBTITLE = 'subtitles'
-    TRACK = 'track'
 
-
-class Provider(str, Enum):
-    MKVMERGE = 'mkvmerge'

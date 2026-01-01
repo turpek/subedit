@@ -1,7 +1,7 @@
 from loguru import logger
 from subedit.adapter import AssetAdapter
 from subedit.assets import Asset
-from subedit.utils import MediaType
+from subedit.media_enums import MediaType
 
 
 class MKVMergeAssetBuilder:
