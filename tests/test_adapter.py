@@ -1,4 +1,5 @@
-from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter, BasicTrackAdapter
+from subedit.adapter import MKVMergeAttachmentAdapter, BasicTrackAdapter
+from subedit.adapters.mkvmerge import MKVMergeTrackAdapter, MKVMergeAudioAdapter, MKVMergeSubtitleAdapter, MKVMergeVideoAdapter
 from subedit.interface import TrackAdapter
 from pytest import fixture
 from pytest import raises
@@ -77,16 +78,16 @@ def attaches_data():
 def track_data():
     return {
         "tracks": [
+            # --- TRILHA 0: VÍDEO (MKVMergeVideoAdapter) ---
             {
                 "codec": "AVC/H.264/MPEG-4p10",
                 "id": 0,
+                "type": "video",
                 "properties": {
+                    # Dados Originais
                     "codec_id": "V_MPEG4/ISO/AVC",
                     "codec_private_data": "01640028ffe1001c67640028acb280f",
                     "codec_private_length": 49,
-                    "color_matrix_coefficients": 1,
-                    "color_primaries": 1,
-                    "color_transfer_characteristics": 1,
                     "default_duration": 41708333,
                     "default_track": True,
                     "display_dimensions": "1920x1080",
@@ -100,22 +101,32 @@ def track_data():
                     "number": 1,
                     "packetizer": "mpeg4_p10_video",
                     "pixel_dimensions": "1920x1080",
-                    "tag__statistics_tags": "BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES",
-                    "tag__statistics_writing_app": "mkvmerge v96.0 ('It's My Life') 64-bit",
-                    "tag__statistics_writing_date_utc": "2025-12-21 17:13:24",
-                    "tag_bps": "7989844",
-                    "tag_duration": "00:23:39.962000000",
-                    "tag_number_of_bytes": "1418159416",
-                    "tag_number_of_frames": "34045",
                     "track_name": "[Erai-raws]_AVC_CR",
-                    "uid": 337073230518517163
-                },
-                "type": "video"
+                    "uid": 337073230518517163,
+
+                    # --- NOVOS CAMPOS FICTÍCIOS (Classe Video) ---
+                    "stereo_mode": 0,             # 0 = Mono/2D (Falta no original)
+                    "field_order": 0,             # 0 = Progressivo (Falta no original)
+                    "color_range": 1,             # 1 = Broadcast Range (Falta no original)
+                    "color_primaries": 1,         # 1 = BT.709
+                    "color_transfer_characteristics": 1,  # 1 = BT.709 (Nota: Adapter tinha typo na chave)
+                    "color_matrix_coefficients": 1,       # 1 = BT.709
+
+                    # --- FLAGS DE TRACK (Classe Track) ---
+                    "flag_hearing_impaired": False,
+                    "flag_visual_impaired": False,
+                    "flag_text_descriptions": False,
+                    "flag_original": True,        # Vídeo Original
+                    "flag_commentary": False
+                }
             },
+            # --- TRILHA 1: ÁUDIO (MKVMergeAudioAdapter) ---
             {
                 "codec": "AAC",
                 "id": 1,
+                "type": "audio",
                 "properties": {
+                    # Dados Originais
                     "audio_channels": 2,
                     "audio_sampling_frequency": 48000,
                     "codec_id": "A_AAC",
@@ -130,24 +141,31 @@ def track_data():
                     "minimum_timestamp": 0,
                     "num_index_entries": 0,
                     "number": 2,
-                    "tag__statistics_tags": "BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES",
-                    "tag__statistics_writing_app": "mkvmerge v96.0 ('It's My Life') 64-bit",
-                    "tag__statistics_writing_date_utc": "2025-12-21 17:13:24",
-                    "tag_bps": "191999",
-                    "tag_duration": "00:23:40.011000000",
-                    "tag_number_of_bytes": "34080257",
-                    "tag_number_of_frames": "66563",
                     "track_name": "[Erai-raws]_AAC_CR",
-                    "uid": 17826996854814350647
-                },
-                "type": "audio"
+                    "uid": 17826996854814350647,
+
+                    # --- NOVOS CAMPOS FICTÍCIOS (Classe Audio) ---
+                    "aac_is_sbr": "false",        # String 'false'/'true' conforme schema JSON
+                    "audio_emphasis": 0,          # 0 = Sem ênfase
+                    "audio_bits_per_sample": 16,  # Frequentemente omitido em AAC, adicionado ficticiamente
+
+                    # --- FLAGS DE TRACK (Classe Track) ---
+                    "flag_hearing_impaired": False,
+                    "flag_visual_impaired": False,
+                    "flag_text_descriptions": False,
+                    "flag_original": True,        # Áudio Original
+                    "flag_commentary": False
+                }
             },
+
+            # --- TRILHA 2: LEGENDA (MKVMergeSubtitleAdapter) ---
             {
                 "codec": "SubStationAlpha",
                 "id": 2,
+                "type": "subtitles",
                 "properties": {
+                    # Dados Originais
                     "codec_id": "S_TEXT/ASS",
-                    "codec_private_data": "5b53637269707420496e666f5d0d0a5",
                     "codec_private_length": 1431,
                     "default_track": True,
                     "enabled_track": True,
@@ -158,25 +176,27 @@ def track_data():
                     "minimum_timestamp": 1010000000,
                     "num_index_entries": 484,
                     "number": 3,
-                    "tag__statistics_tags": "BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES",
-                    "tag__statistics_writing_app": "mkvmerge v96.0 ('It's My Life') 64-bit",
-                    "tag__statistics_writing_date_utc": "2025-12-21 17:13:24",
-                    "tag_bps": "226",
-                    "tag_duration": "00:22:12.530000000",
-                    "tag_number_of_bytes": "37761",
-                    "tag_number_of_frames": "484",
                     "text_subtitles": True,
                     "track_name": "CR",
-                    "uid": 15892778650616245918
-                },
-                "type": "subtitles"
+                    "uid": 15892778650616245918,
+
+                    # --- FLAGS DE TRACK (Classe Track) ---
+                    "flag_hearing_impaired": True,  # Exemplo: Legenda para surdos (SDH)
+                    "flag_visual_impaired": False,
+                    "flag_text_descriptions": False,
+                    "flag_original": False,
+                    "flag_commentary": False
+                }
             },
+
+            # --- TRILHA 3: LEGENDA PT-BR (MKVMergeSubtitleAdapter) ---
             {
                 "codec": "SubStationAlpha",
                 "id": 3,
+                "type": "subtitles",
                 "properties": {
+                    # Dados Originais
                     "codec_id": "S_TEXT/ASS",
-                    "codec_private_data": "5b53637269707420496e666f5d0d0a5469746c653a",
                     "codec_private_length": 1207,
                     "default_track": False,
                     "enabled_track": True,
@@ -187,18 +207,17 @@ def track_data():
                     "minimum_timestamp": 1140000000,
                     "num_index_entries": 366,
                     "number": 4,
-                    "tag__statistics_tags": "BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES",
-                    "tag__statistics_writing_app": "mkvmerge v96.0 ('It's My Life') 64-bit",
-                    "tag__statistics_writing_date_utc": "2025-12-21 17:13:24",
-                    "tag_bps": "134",
-                    "tag_duration": "00:23:38.800000000",
-                    "tag_number_of_bytes": "23828",
-                    "tag_number_of_frames": "366",
                     "text_subtitles": True,
                     "track_name": "Brazilian_CR",
-                    "uid": 14539514268308361919
-                },
-                "type": "subtitles"
+                    "uid": 14539514268308361919,
+
+                    # --- FLAGS DE TRACK (Classe Track) ---
+                    "flag_hearing_impaired": False,
+                    "flag_visual_impaired": False,
+                    "flag_text_descriptions": False,
+                    "flag_original": False,       # Tradução
+                    "flag_commentary": False
+                }
             }]
     }
 
@@ -236,73 +255,67 @@ def test_MKVMergeAttachmentAdapter_id_last(attaches_data):
 def test_MKVMergeTrackAdapter_id(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.id() == 0
+    assert adapter.id == 0
 
 
 def test_MKVMergeTrackAdapter_uid(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.uid() == 337073230518517163
+    assert adapter.uid == 337073230518517163
 
 
 def test_MKVMergeTrackAdapter_codec(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.codec() == "AVC/H.264/MPEG-4p10"
+    assert adapter.codec == "AVC/H.264/MPEG-4p10"
 
 
 def test_MKVMergeTrackAdapter_codec_id(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.codec_id() == "V_MPEG4/ISO/AVC"
+    assert adapter.codec_id == "V_MPEG4/ISO/AVC"
 
 
 def test_MKVMergeTrackAdapter_default_track(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.default_track() is True
+    assert adapter.default_track is True
 
 
 def test_MKVMergeTrackAdapter_enabled_track(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.enabled_track() is True
+    assert adapter.enabled_track is True
 
 
 def test_MKVMergeTrackAdapter_forced_track(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.forced_track() is False
+    assert adapter.forced_track is False
 
 
 def test_MKVMergeTrackAdapter_language(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.language() == "jpn"
+    assert adapter.language == "jpn"
 
 
 def test_MKVMergeTrackAdapter_language_ietf(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.language_ietf() == "ja"
+    assert adapter.language_ietf == "ja"
 
 
 def test_MKVMergeTrackAdapter_number(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.number() == 1
+    assert adapter.number == 1
 
 
 def test_MKVMergeTrackAdapter_track_name(track_data):
     data = track_data['tracks'][0]
     adapter = MKVMergeTrackAdapter(data)
-    assert adapter.track_name() == "[Erai-raws]_AVC_CR"
-
-
-def test_MKVMergeTrackAdapter_type(track_data):
-    data = track_data['tracks'][0]
-    adapter = MKVMergeTrackAdapter(data)
-    assert adapter.type() == "video"
+    assert adapter.track_name == "[Erai-raws]_AVC_CR"
 
 
 def test_BasicTrackAdapter_id_3():
@@ -407,3 +420,177 @@ def test_BasicTrackAdapter_suffix_vazio():
         BasicTrackAdapter(track_adapter)
     result = str(excinfo.value)
     assert result == expect
+
+
+def test_MKVMergeAudioAdapter_padrao(track_data):
+    expect = {
+        'id': 0,
+        'codec': 'AAC',
+        'uid': None,
+        'number': 0,
+        'codec_id': '',
+        'track_name': '',
+        'default_track': True,
+        'enabled_track': True,
+        'forced_track': False,
+        'language': 'eng',
+        'language_ietf': None,
+        'default_duration': None,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': False,
+        'flag_commentary': False,
+        'audio_channels': None,
+        'audio_emphasis': None,
+        'aac_is_sbr': None
+    }
+
+    data = expect
+    result = vars(MKVMergeAudioAdapter(data))
+    assert result == expect
+
+
+def test_MKVMergeAudioAdapter_geral(track_data):
+    data = track_data['tracks'][1]
+    result = vars(MKVMergeAudioAdapter(data))
+    assert result == {
+        'id': 1,
+        'uid': 17826996854814350647,
+        'number': 2,
+        'codec': 'AAC',
+        'codec_id': 'A_AAC',
+        'default_track': True,
+        'enabled_track': True,
+        'forced_track': False,
+        'track_name': '[Erai-raws]_AAC_CR',
+        'language': 'jpn',
+        'language_ietf': 'ja',
+        'default_duration': 21333333,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': True,
+        'flag_commentary': False,
+        'audio_channels': 2,
+        'aac_is_sbr': 'false',
+        'audio_emphasis': 0
+    }
+
+
+def test_MKVMergeVideoAdapter_padrao(track_data):
+    expect = {
+        'id': 0,
+        'uid': None,
+        'codec': 'AVC/H.264/MPEG-4p10',
+        'codec_id': '',
+        'default_track': True,
+        'enabled_track': True,
+        'forced_track': False,
+        'language': 'eng',
+        'language_ietf': None,
+        'number': 0,
+        'track_name': '',
+        'default_duration': None,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': False,
+        'flag_commentary': False,
+        'display_dimensions': None,
+        'stereo_mode': None,
+        'field_order': None,
+        'color_range': None,
+        'color_primaries': None,
+        'color_transfer_characteristics': None,
+        'color_matrix_coefficients': None
+    }
+    data = expect
+    result = vars(MKVMergeVideoAdapter(data))
+    assert result == expect
+
+
+def test_MKVMergeVideoAdapter_geral(track_data):
+    data = track_data['tracks'][0]
+    result = vars(MKVMergeVideoAdapter(data))
+    assert result == {
+        'id': 0,
+        'uid': 337073230518517163,
+        'codec': 'AVC/H.264/MPEG-4p10',
+        'codec_id': 'V_MPEG4/ISO/AVC',
+        'default_track': True,
+        'enabled_track': True,
+        'forced_track': False,
+        'language': 'jpn',
+        'language_ietf': 'ja',
+        'number': 1,
+        'track_name': '[Erai-raws]_AVC_CR',
+        'default_duration': 41708333,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': True,
+        'flag_commentary': False,
+        'display_dimensions': '1920x1080',
+        'stereo_mode': 0,
+        'field_order': 0,
+        'color_range': 1,
+        'color_primaries': 1,
+        'color_transfer_characteristics': 1,
+        'color_matrix_coefficients': 1
+    }
+
+
+def test_MKVMergeSubtitleAdapter_padrao(track_data):
+    expect = {
+        'id': 0,
+        'codec': 'SubStationAlpha',
+        'uid': None,
+        'number': 0,
+        'codec_id': '',
+        'track_name': '',
+        'default_track': True,
+        'enabled_track': True,
+        'forced_track': False,
+        'language': 'eng',
+        'language_ietf': None,
+        'default_duration': None,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': False,
+        'flag_commentary': False,
+        'encoding': '',
+        'text_subtitles': None
+    }
+
+    data = expect
+
+    result = vars(MKVMergeSubtitleAdapter(data))
+    assert result == expect
+
+
+def test_MKVMergeSubtitleAdapter_geral(track_data):
+    data = track_data['tracks'][3]
+    result = vars(MKVMergeSubtitleAdapter(data))
+    assert result == {
+        'id': 3,
+        'uid': 14539514268308361919,
+        'codec': 'SubStationAlpha',
+        'codec_id': 'S_TEXT/ASS',
+        'default_track': False,
+        'enabled_track': True,
+        'forced_track': False,
+        'language': 'por',
+        'language_ietf': 'pt-BR',
+        'number': 4,
+        'track_name': 'Brazilian_CR',
+        'default_duration': None,
+        'flag_hearing_impaired': False,
+        'flag_visual_impaired': False,
+        'flag_text_descriptions': False,
+        'flag_original': False,
+        'flag_commentary': False,
+        'encoding': 'UTF-8',
+        'text_subtitles': True
+    }
