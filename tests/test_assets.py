@@ -1,4 +1,5 @@
-from subedit.assets import Attachment, AudioTrack, SubtitleTrack, VideoTrack
+from subedit.assets.attachments import Attachment
+from subedit.assets.tracks_dep import VideoTrack, SubtitleTrack
 from subedit.interface import AssetAdapter, TrackAdapter
 from pytest import fixture
 from tests.data import MKVMERGE_DATA
@@ -170,61 +171,6 @@ def test_SubtitleTrack_number(sub_track):
 def test_SubtitleTrack_track_name(sub_track):
     track = SubtitleTrack(sub_track)
     assert track.track_name() == 'Brazilian_CR'
-
-
-def test_AudioTrack_id(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.id() == 1
-
-
-def test_AudioTrack_uid(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.uid() == 17826996854814350647
-
-
-def test_AudioTrack_codec(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.codec() == "AAC"
-
-
-def test_AudioTrack_codec_id(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.codec_id() == "A_AAC"
-
-
-def test_AudioTrack_default_track(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.default_track() is True
-
-
-def test_AudioTrack_enable_track(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.enabled_track() is True
-
-
-def test_AudioTrack_forced_track(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.forced_track() is False
-
-
-def test_AudioTrack_language(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.language() == 'jpn'
-
-
-def test_AudioTrack_language_ietf(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.language_ietf() == 'ja'
-
-
-def test_AudioTrack_number(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.number() == 2
-
-
-def test_AudioTrack_track_name(audio_track):
-    track = AudioTrack(audio_track)
-    assert track.track_name() == '[Erai-raws]_AAC_CR'
 
 
 def test_VideoTrack_id(video_track):
