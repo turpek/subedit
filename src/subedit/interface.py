@@ -21,7 +21,7 @@ class Asset(ABC):
         ...
 
 
-class Track(ABC):
+class ITrack(ABC):
     def __init__(self):
         ...
 

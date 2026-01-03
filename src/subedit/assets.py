@@ -1,4 +1,4 @@
-from subedit.interface import AssetAdapter, Track, TrackAdapter, Asset
+from subedit.interface import AssetAdapter, ITrack as Track, TrackAdapter, Asset
 
 
 class Attachment(Asset):
