@@ -1,5 +1,7 @@
 from pathlib3x import Path
-from subedit.assets import Attachment, AudioTrack, SubtitleTrack, VideoTrack
+from subedit.assets.attachments import Attachment
+from subedit.assets.tracks import AudioTrack
+from subedit.assets.tracks_dep import SubtitleTrack, VideoTrack
 from subedit.asset_builder import MKVMergeAssetBuilder
 from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter
 from subedit.readers import JSONReader

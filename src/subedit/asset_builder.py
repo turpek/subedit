@@ -1,6 +1,6 @@
 from loguru import logger
 from subedit.adapter import AssetAdapter
-from subedit.assets import Asset
+from subedit.assets.attachments import Asset
 from subedit.media_enums import MediaType
 
 

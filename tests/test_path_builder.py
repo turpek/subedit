@@ -1,6 +1,6 @@
 from subedit.path_builder import PathBuilder
 from subedit.custom_exceptions import UnsupportedAssetError
-from subedit.assets import Attachment, BasicTrack
+from subedit.assets.attachments import Attachment, BasicTrack
 from pytest import raises
 
 

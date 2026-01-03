@@ -1,7 +1,7 @@
 from pathlib3x import Path
 from subedit.custom_exceptions import UnsupportedAssetError
 from subedit.interface import Asset
-from subedit.assets import Attachment, BasicTrack
+from subedit.assets.attachments import Attachment, BasicTrack
 
 
 class PathBuilder:
