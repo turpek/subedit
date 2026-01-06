@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class MediaType(str, Enum):
+class MediaType(Enum):
     ATTACHMENT = 'attachments'
     AUDIO = 'audio'
     VIDEO = 'video'
@@ -34,3 +34,26 @@ MEDIA_EXPANSION = {
         MediaType.SUBTITLE,
     ],
 }
+
+COMMON_TRACK_PROPS = {
+    "ID": "id",
+    "LANGUAGE": "language",
+    "LANGUAGE_IETF": "language_ietf",
+    "TRACK_NAME": "track_name",
+    "CODEC": "codec",
+    "CODEC_ID": "codec_id"
+}
+
+
+class BaseMediaProperty(Enum):
+    ...
+
+
+def build_track_property(name: str):
+    return Enum(name, COMMON_TRACK_PROPS, type=BaseMediaProperty)
+
+
+AudioProperty = build_track_property("AudioProperty")
+VideoProperty = build_track_property("VideoProperty")
+SubtitleProperty = build_track_property("SubtitleProperty")
+TrackProperty = build_track_property("TrackProperty")
