@@ -65,7 +65,7 @@ def test_AssetSelect_select_empty():
     assert result == expect
 
 
-def test_AssetSelect_select_subtitle():
+def test_AssetSelect_select_subtitle(metype):
     sub = 'subtitle'
     expect = ASSETS[sub]
     sel = AssetSelect(12, ASSETS)
@@ -74,7 +74,7 @@ def test_AssetSelect_select_subtitle():
     assert result == expect
 
 
-def test_AssetSelect_uniao_de_empty():
+def test_AssetSelect_uniao_de_empty(metype):
     sub = 'subtitle'
     expect = []
     sel1 = AssetSelect(12, {})
@@ -84,7 +84,7 @@ def test_AssetSelect_uniao_de_empty():
     assert result == expect
 
 
-def test_AssetSelect_uniao_de_empty_com_id_diff():
+def test_AssetSelect_uniao_de_empty_com_id_diff(metype):
     expect = "Cannot combine objects that do not share the same origin"
     with raises(ValueError) as excinfo:
         sel1 = AssetSelect(12, {})
@@ -184,7 +184,7 @@ def test_AssetSelect_uniao_composta_right_empty(metype):
     assert set(result) == expect
 
 
-def test_AssetSelect_uniao_composta_empty_com_id_diff():
+def test_AssetSelect_uniao_composta_empty_com_id_diff(metype):
     expect = "Cannot combine objects that do not share the same origin"
     with raises(ValueError) as excinfo:
         sel1 = AssetSelect(12, {})
