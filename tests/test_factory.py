@@ -10,6 +10,7 @@ def mkvmerge_deps(mocker):
     return {
         'AttachmentAdapter': mocker.patch('subedit.factory.MKVMergeAttachmentAdapter'),
         'TrackAdapter': mocker.patch('subedit.factory.MKVMergeTrackAdapter'),
+        'AudioAdapter': mocker.patch('subedit.factory.MKVMergeAudioAdapter'),
         'Attachment': mocker.patch('subedit.factory.Attachment'),
         'Audio': mocker.patch('subedit.factory.AudioTrack'),
         'Video': mocker.patch('subedit.factory.VideoTrack'),
@@ -22,6 +23,8 @@ def mkvmerge_deps(mocker):
 @fixture
 def mkvmerge_builder(mocker):
     return mocker.patch('subedit.factory.MKVMergeAssetBuilder')
+
+
 def test_Factory_build_mkvmerge_parse(mocker):
     FakeFactory = mocker.MagicMock()
     mocker.patch.dict(Factory._provider, {Provider.MKVMERGE: FakeFactory})
@@ -72,7 +75,7 @@ def test_MKVMergeFactory_register_audio(mkvmerge_deps, mkvmerge_builder):
     mkvmerge_factory = MKVMergeFactory(Path('video.mkv'))
     asset = mkvmerge_factory.build()
     asset.register_type.assert_any_call(
-        mkvmerge_deps['TrackAdapter'],
+        mkvmerge_deps['AudioAdapter'],
         mkvmerge_deps['Audio'],
         MediaType.AUDIO
     )

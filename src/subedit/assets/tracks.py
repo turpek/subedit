@@ -3,7 +3,7 @@ from typing import Optional
 
 
 @dataclass(frozen=True)
-class Track:
+class TrackSnapshot:
     id: int
     codec: str
     uid: Optional[int] = 0        # Baseado na sua linha 5 (prop.get('uid', 0))
@@ -24,7 +24,7 @@ class Track:
 
 
 @dataclass(frozen=True)
-class AudioTrack(Track):
+class AudioTrackSnapshot(TrackSnapshot):
     audio_channels: int = None
     aac_is_sbr: Optional[bool] = None
     audio_emphasis: Optional[int] = None
