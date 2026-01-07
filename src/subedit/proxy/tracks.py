@@ -1,16 +1,18 @@
 from subedit.assets.tracks import AudioTrackSnapshot, TrackSnapshot
+from subedit.adapters.mkvmerge import MKVMergeAudioAdapter
 
 
 class AssetProxy:
     def __init__(self, original_asset):
-        # Inicializa sem disparar __setattr__
         super().__setattr__('_original', original_asset)
         super().__setattr__('_changes', {})
 
     def __getattr__(self, name):
-        if name in self._changes:
-            return self._changes[name]
-        return getattr(self._original, name)
+        changes = object.__getattribute__(self, '_changes')
+        if name in changes:
+            return changes[name]
+        original = object.__getattribute__(self, '_original')
+        return getattr(original, name)
 
     def __setattr__(self, name, value):
         if name in ('_original', '_changes'):
@@ -45,5 +47,6 @@ class Track(AssetProxy):
 
 
 class AudioTrack(Track):
-    def __init__(self, original: AudioTrackSnapshot):
-        super().__init__(original)
+    def __init__(self, audio_adapter: MKVMergeAudioAdapter):
+        audio = AudioTrackSnapshot(**vars(audio_adapter))
+        super().__init__(audio)
