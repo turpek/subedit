@@ -1,5 +1,6 @@
 from __future__ import annotations
 from subedit.media_enums import MediaType
+from operator import or_, and_, sub, xor
 
 
 class AssetSelect:
@@ -18,80 +19,43 @@ class AssetSelect:
         if self.__uuid != other.__uuid:
             raise ValueError("Cannot combine objects that do not share the same origin")
 
-    def __and__(self, other: AssetSelect) -> AssetSelect:
+    def __get_media_types(self, other: AssetSelect):
+        return set(self.__assets.keys()) | set(other.__assets.keys())
+
+    def __operator(self, other: AssetSelect, operation: callable) -> dict:
         self.__check_operation(other)
 
-        assets = {}
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) & set(other.get(media_type))
-            if ass:
-                assets[media_type] = list(ass)
-        return AssetSelect(self.__uuid, assets)
+        collection_assets = {}
+        media_types = self.__get_media_types(other)
+        for media_type in media_types:
+            assets = operation(set(self.get(media_type)), set(other.get(media_type)))
+            collection_assets[media_type] = list(assets)
+        return collection_assets
+
+    def __and__(self, other: AssetSelect) -> AssetSelect:
+        return AssetSelect(self.__uuid, self.__operator(other, and_))
 
     def __iand__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) & set(other.get(media_type))
-            if media_type in self.__assets:
-                if ass:
-                    self.__assets[media_type] = list(ass)
-                else:
-                    del self.__assets[media_type]
+        self.__assets = self.__operator(other, and_)
         return self
 
     def __or__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        assets = {}
-        for media_type in MediaType:
-            ass = set(other.get(media_type))
-            if media_type in self.__assets:
-                ass |= set(self.__assets[media_type])
-            if ass:
-                assets[media_type] = list(ass)
-        return AssetSelect(self.__uuid, assets)
+        return AssetSelect(self.__uuid, self.__operator(other, or_))
 
     def __ior__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) | set(other.get(media_type))
-            self.__assets[media_type] = list(ass)
+        self.__assets = self.__operator(other, or_)
         return self
 
     def __sub__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        assets = {}
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) - set(other.get(media_type))
-            if ass:
-                assets[media_type] = list(ass)
-        return AssetSelect(self.__uuid, assets)
+        return AssetSelect(self.__uuid, self.__operator(other, sub))
 
     def __isub__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) - set(other.get(media_type))
-            self.__assets[media_type] = list(ass)
+        self.__assets = self.__operator(other, sub)
         return self
 
     def __xor__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        assets = {}
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) ^ set(other.get(media_type))
-            if ass:
-                assets[media_type] = list(ass)
-        return AssetSelect(self.__uuid, assets)
+        return AssetSelect(self.__uuid, self.__operator(other, xor))
 
     def __ixor__(self, other: AssetSelect) -> AssetSelect:
-        self.__check_operation(other)
-
-        for media_type in MediaType:
-            ass = set(self.get(media_type)) ^ set(other.get(media_type))
-            self.__assets[media_type] = list(ass)
+        self.__assets = self.__operator(other, xor)
         return self
