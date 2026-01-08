@@ -2,10 +2,12 @@ from loguru import logger
 from subedit.adapter import AssetAdapter
 from subedit.assets.attachments import Asset
 from subedit.media_enums import MediaType
+import uuid
 
 
 class MKVMergeAssetBuilder:
     def __init__(self, data: dict):
+        self.__uuid = uuid.uuid4()
         self._factories = {}
         self._assets = {}
         self._data = data
@@ -41,7 +43,7 @@ class MKVMergeAssetBuilder:
         self._build_called = True
 
     def register_type(self, adapter_cls: AssetAdapter, asset_cls: Asset, media_type: MediaType) -> None:
-        self._factories[media_type] = lambda data: asset_cls(adapter_cls(data))
+        self._factories[media_type] = lambda data: asset_cls(adapter_cls(data), self.__uuid)
         self._assets.setdefault(media_type, [])
 
     def get(self, media_type: MediaType):
