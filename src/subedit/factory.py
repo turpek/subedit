@@ -1,10 +1,9 @@
 from pathlib3x import Path
 from subedit.assets.attachments import Attachment
-from subedit.assets.tracks_dep import SubtitleTrack, VideoTrack
 from subedit.asset_builder import MKVMergeAssetBuilder
-from subedit.adapter import MKVMergeAttachmentAdapter, MKVMergeTrackAdapter
-from subedit.adapters.mkvmerge import MKVMergeAudioAdapter
-from subedit.proxy.tracks import AudioTrack
+from subedit.adapter import MKVMergeAttachmentAdapter
+from subedit.adapters.mkvmerge import MKVMergeAudioAdapter, MKVMergeSubtitleAdapter, MKVMergeVideoAdapter
+from subedit.proxy.tracks import AudioTrack, SubtitleTrack, VideoTrack
 from subedit.readers import JSONReader
 from subedit.media_enums import MediaType
 from subedit.media_enums import Provider
@@ -21,8 +20,8 @@ class MKVMergeFactory:
         builder = MKVMergeAssetBuilder(data)
         builder.register_type(MKVMergeAttachmentAdapter, Attachment, MediaType.ATTACHMENT)
         builder.register_type(MKVMergeAudioAdapter, AudioTrack, MediaType.AUDIO)
-        builder.register_type(MKVMergeTrackAdapter, VideoTrack, MediaType.VIDEO)
-        builder.register_type(MKVMergeTrackAdapter, SubtitleTrack, MediaType.SUBTITLE)
+        builder.register_type(MKVMergeSubtitleAdapter, SubtitleTrack, MediaType.SUBTITLE)
+        builder.register_type(MKVMergeVideoAdapter, VideoTrack, MediaType.VIDEO)
         builder.build()
         return builder
 
