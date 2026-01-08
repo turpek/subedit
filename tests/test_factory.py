@@ -9,8 +9,9 @@ from subprocess import PIPE
 def mkvmerge_deps(mocker):
     return {
         'AttachmentAdapter': mocker.patch('subedit.factory.MKVMergeAttachmentAdapter'),
-        'TrackAdapter': mocker.patch('subedit.factory.MKVMergeTrackAdapter'),
         'AudioAdapter': mocker.patch('subedit.factory.MKVMergeAudioAdapter'),
+        'SubtitleAdapter': mocker.patch('subedit.factory.MKVMergeSubtitleAdapter'),
+        'VideoAdapter': mocker.patch('subedit.factory.MKVMergeVideoAdapter'),
         'Attachment': mocker.patch('subedit.factory.Attachment'),
         'Audio': mocker.patch('subedit.factory.AudioTrack'),
         'Video': mocker.patch('subedit.factory.VideoTrack'),
@@ -85,7 +86,7 @@ def test_MKVMergeFactory_register_video(mkvmerge_deps, mkvmerge_builder):
     mkvmerge_factory = MKVMergeFactory(Path('video.mkv'))
     asset = mkvmerge_factory.build()
     asset.register_type.assert_any_call(
-        mkvmerge_deps['TrackAdapter'],
+        mkvmerge_deps['VideoAdapter'],
         mkvmerge_deps['Video'],
         MediaType.VIDEO
     )
@@ -95,7 +96,7 @@ def test_MKVMergeFactory_register_subtitle(mkvmerge_deps, mkvmerge_builder):
     mkvmerge_factory = MKVMergeFactory(Path('video.mkv'))
     asset = mkvmerge_factory.build()
     asset.register_type.assert_any_call(
-        mkvmerge_deps['TrackAdapter'],
+        mkvmerge_deps['SubtitleAdapter'],
         mkvmerge_deps['Subtitle'],
         MediaType.SUBTITLE
     )
