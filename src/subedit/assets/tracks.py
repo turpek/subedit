@@ -6,7 +6,7 @@ from typing import Optional
 class TrackSnapshot:
     id: int
     codec: str
-    uid: Optional[int] = 0        # Baseado na sua linha 5 (prop.get('uid', 0))
+    uid: Optional[int] = None
     codec_id: str = ""
     default_track: bool = True    # Padrão True [1]
     enabled_track: bool = True    # Padrão True [1]
@@ -25,7 +25,7 @@ class TrackSnapshot:
 
 @dataclass(frozen=True)
 class AudioTrackSnapshot(TrackSnapshot):
-    audio_channels: int = None
+    audio_channels: Optional[int] = None
     aac_is_sbr: Optional[bool] = None
     audio_emphasis: Optional[int] = None
 
