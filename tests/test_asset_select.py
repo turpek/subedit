@@ -25,11 +25,33 @@ def test_AssetSelect_get_empty():
     assert result == expect
 
 
+def test_AssetSelect_keys_empty():
+    expect = set()
+    sel = AssetSelect(12, {})
+    result = set(sel.keys())
+    assert result == expect
+
+
 def test_AssetSelect_get_subtitle():
     sub = 'subtitle'
     expect = ASSETS[sub]
     sel = AssetSelect(1, ASSETS)
     result = sel.get(sub)
+    assert result == expect
+
+
+def test_AssetSelect_keys():
+    expect = set(ASSETS.keys())
+    sel = AssetSelect(12, ASSETS)
+    result = set(sel.keys())
+    assert result == expect
+
+
+def test_AssetSelect_filtro_de_lista_vazia_no_init():
+    assets = {'sub': ['por', 'eng', 'jpn'], 'audio': [], 'video': ['video_por']}
+    expect = set(('sub', 'video'))
+    sel = AssetSelect(12, assets)
+    result = set(sel.keys())
     assert result == expect
 
 
@@ -626,4 +648,11 @@ def test_AssetSelect_simmetric_difference_composta_com_varios_tipos(metype):
     sel = sel1
     sel1 ^= sel2
     result = set(sel.get(sub)) | set(sel.get('video')) | set(sel.get('audio'))
+    assert result == expect
+
+
+def test_AssetSelect_selecionar_um_asset_especifico(metype):
+    expect = set(['video'])
+    sel = AssetSelect(12, ASSETS)
+    result = set(sel(['video']).keys())
     assert result == expect
