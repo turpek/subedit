@@ -30,6 +30,7 @@ class AudioTrackSnapshot(TrackSnapshot):
     audio_emphasis: Optional[int] = None
 
 
-# @dataclass(frozen=True)
-# class Video(Track):
-#     display_dimensions: str
+@dataclass(frozen=True)
+class SubtitleTrackSnapshot(TrackSnapshot):
+    encoding: str = ''
+    text_subtitles: Optional[bool] = None
