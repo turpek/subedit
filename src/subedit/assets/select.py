@@ -5,7 +5,7 @@ from operator import or_, and_, sub, xor
 
 class AssetSelect:
     def __init__(self, uuid, assets):
-        self.__assets = assets
+        self.__assets = {key: asset for key, asset in assets.items() if asset}
         self.__uuid = uuid
 
     def select(self, media_type) -> AssetSelect:
@@ -15,12 +15,15 @@ class AssetSelect:
     def get(self, media_type: MediaType):
         return self.__assets.get(media_type, [])
 
+    def keys(self):
+        return self.__assets.keys()
+
     def __check_operation(self, other: AssetSelect):
         if self.__uuid != other.__uuid:
             raise ValueError("Cannot combine objects that do not share the same origin")
 
     def __get_media_types(self, other: AssetSelect):
-        return set(self.__assets.keys()) | set(other.__assets.keys())
+        return self.keys() | other.keys()
 
     def __operator(self, other: AssetSelect, operation: callable) -> dict:
         self.__check_operation(other)
@@ -59,3 +62,11 @@ class AssetSelect:
     def __ixor__(self, other: AssetSelect) -> AssetSelect:
         self.__assets = self.__operator(other, xor)
         return self
+
+    def __call__(self, media_types: list[MediaType]):
+        assets = {
+            media_type: asset.copy()
+            for media_type, asset in self.__assets.items()
+            if media_type in media_types
+        }
+        return AssetSelect(self.__uuid, assets)
