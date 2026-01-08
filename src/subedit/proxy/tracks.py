@@ -1,11 +1,13 @@
-from subedit.assets.tracks import AudioTrackSnapshot, TrackSnapshot
-from subedit.adapters.mkvmerge import MKVMergeAudioAdapter
+from subedit.assets.tracks import AudioTrackSnapshot, TrackSnapshot, VideoTrackSnapshot, SubtitleTrackSnapshot
+from subedit.adapters.mkvmerge import MKVMergeAudioAdapter, MKVMergeSubtitleAdapter, MKVMergeVideoAdapter
+from uuid import UUID
 
 
 class AssetProxy:
-    def __init__(self, original_asset):
+    def __init__(self, original_asset, uuid: UUID):
         super().__setattr__('_original', original_asset)
         super().__setattr__('_changes', {})
+        super().__setattr__('_uuid', uuid)
 
     def __getattr__(self, name):
         changes = object.__getattribute__(self, '_changes')
@@ -42,11 +44,23 @@ class AssetProxy:
 
 
 class Track(AssetProxy):
-    def __init__(self, original: TrackSnapshot):
-        super().__init__(original)
+    def __init__(self, original: TrackSnapshot, uuid: UUID):
+        super().__init__(original, uuid)
 
 
 class AudioTrack(Track):
-    def __init__(self, audio_adapter: MKVMergeAudioAdapter):
+    def __init__(self, audio_adapter: MKVMergeAudioAdapter, uuid: UUID):
         audio = AudioTrackSnapshot(**vars(audio_adapter))
-        super().__init__(audio)
+        super().__init__(audio, uuid)
+
+
+class SubtitleTrack(Track):
+    def __init__(self, subtitle_adapter: MKVMergeSubtitleAdapter, uuid: UUID):
+        subtitle = SubtitleTrackSnapshot(**vars(subtitle_adapter))
+        super().__init__(subtitle, uuid)
+
+
+class VideoTrack(Track):
+    def __init__(self, video_adapter: MKVMergeVideoAdapter, uuid: UUID):
+        video = VideoTrackSnapshot(**vars(video_adapter))
+        super().__init__(video, uuid)
