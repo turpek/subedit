@@ -34,3 +34,14 @@ class AudioTrackSnapshot(TrackSnapshot):
 class SubtitleTrackSnapshot(TrackSnapshot):
     encoding: str = ''
     text_subtitles: Optional[bool] = None
+
+
+@dataclass(frozen=True)
+class VideoTrackSnapshot(TrackSnapshot):
+    display_dimensions: Optional[str] = None
+    stereo_mode: Optional[int] = None
+    field_order: Optional[int] = None
+    color_range: Optional[int] = None
+    color_primaries: Optional[int] = None
+    color_transfer_characteristics: Optional[int] = None
+    color_matrix_coefficients: Optional[int] = None
