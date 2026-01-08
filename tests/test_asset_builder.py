@@ -3,6 +3,7 @@ from loguru import logger
 from subedit.asset_builder import MKVMergeAssetBuilder
 from subedit.media_enums import MediaType
 from pytest import raises
+from uuid import UUID
 
 
 class FakeAttachmentAdapter:
@@ -11,17 +12,18 @@ class FakeAttachmentAdapter:
 
 
 class FakeAttachment:
-    def __init__(self, data: dict):
+    def __init__(self, data: dict, uuid: UUID):
         ...
 
 
 class FakeTrackAdapter:
+    # def __init__(self, data: dict, uuid: UUID):
     def __init__(self, data: dict):
         ...
 
 
 class FakeTrack:
-    def __init__(self, data: dict):
+    def __init__(self, data: dict, uuid: UUID):
         ...
 
 
