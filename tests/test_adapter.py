@@ -473,7 +473,7 @@ def test_MKVMergeAudioAdapter_geral(track_data):
         'flag_original': True,
         'flag_commentary': False,
         'audio_channels': 2,
-        'aac_is_sbr': 'false',
+        'aac_is_sbr': False,
         'audio_emphasis': 0
     }
 
