@@ -26,8 +26,11 @@ class MKVMergeAudioAdapter(MKVMergeTrackAdapter):
 
         prop = data.get('properties', {})
         self.audio_channels = prop.get('audio_channels', None)
-        self.aac_is_sbr = prop.get('aac_is_sbr', None)
         self.audio_emphasis = prop.get('audio_emphasis', None)
+
+        acc_key = prop.get('aac_is_sbr', None)
+        acc_is_sbr = {'true': True, 'false': False}
+        self.aac_is_sbr = acc_is_sbr.get(acc_key, None)
 
 
 class MKVMergeSubtitleAdapter(MKVMergeTrackAdapter):
