@@ -1,4 +1,3 @@
-from enum import Enum
 from loguru import logger
 from pathlib import Path
 import logging
@@ -92,7 +91,6 @@ TRACKS_SUFFIX = {
 }
 
 
-
 def check_output(path: str | Path):
     output_dir = Path(path) / 'output'
     if not output_dir.exists():
@@ -133,6 +131,3 @@ class PrettyCount:
     def __iter__(self):
         for i, el in enumerate(self.__list, start=self.__start):
             yield PrettyMsg(i, self.__size, self.__digits), el
-
-
-
