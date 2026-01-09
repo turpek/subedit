@@ -10,7 +10,7 @@ class MediaType(Enum):
     ASSET = 'asset'
 
     def expand(self) -> set["MediaType"]:
-        return MEDIA_EXPANSION[self]
+        return MEDIA_EXPANSION[self].copy()
 
 
 class Provider(Enum):
