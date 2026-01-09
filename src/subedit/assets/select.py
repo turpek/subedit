@@ -23,12 +23,22 @@ class AssetSelect:
             raise ValueError("Cannot combine objects that do not share the same origin")
 
     def __get_media_types(self, other: AssetSelect):
-        return self.keys() | other.keys()
+        return self.keys() & other.keys()
+
+    def __get_collection_assets(self, other: AssetSelect) -> dict:
+        media_types = self.keys() - other.keys()
+        collection_assets = {}
+        for media_type in media_types:
+            collection_assets[media_type] = self[media_type].copy()
+        media_types = other.keys() - self.keys()
+        for media_type in media_types:
+            collection_assets[media_type] = other[media_type].copy()
+        return collection_assets
 
     def __operator(self, other: AssetSelect, operation: callable) -> dict:
         self.__check_operation(other)
 
-        collection_assets = {}
+        collection_assets = self.__get_collection_assets(other)
         media_types = self.__get_media_types(other)
         for media_type in media_types:
             assets = operation(set(self.get(media_type)), set(other.get(media_type)))
@@ -70,3 +80,6 @@ class AssetSelect:
             if media_type in media_types
         }
         return AssetSelect(self.__uuid, assets)
+
+    def __getitem__(self, media_type: MediaType):
+        return self.__assets[media_type]
