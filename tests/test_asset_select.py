@@ -255,7 +255,7 @@ def test_AssetSelect_difference(metype):
 
 def test_AssetSelect_difference_left_empty(metype):
     sub = 'subtitle'
-    expect = set([])
+    expect = set(['sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {})
     sel2 = AssetSelect(12, {sub: ['sub_por', 'sub_esp']})
     sel = sel1 - sel2
@@ -285,7 +285,7 @@ def test_AssetSelect_difference_empty_com_id_diff(metype):
 
 def test_AssetSelect_difference_com_varios_tipos(metype):
     sub = 'subtitle'
-    expect = set(['sub_esp', 'video_01'])
+    expect = set(['sub_esp', 'video_01', 'audio_por'])
     arg1 = {
         sub: ['sub_por', 'sub_esp'],
         'video': ['video_01']
@@ -325,7 +325,7 @@ def test_AssetSelect_difference_composta(metype):
 
 def test_AssetSelect_difference_composta_left_empty(metype):
     sub = 'subtitle'
-    expect = set()
+    expect = set(['sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {})
     sel2 = AssetSelect(12, {sub: ['sub_por', 'sub_esp']})
     sel = sel1
@@ -347,7 +347,7 @@ def test_AssetSelect_difference_composta_right_empty(metype):
 
 def test_AssetSelect_difference_composta_com_varios_tipos(metype):
     sub = 'subtitle'
-    expect = set(['sub_esp', 'video_01'])
+    expect = set(['sub_esp', 'video_01', 'audio_por'])
     arg1 = {
         sub: ['sub_por', 'sub_esp'],
         'video': ['video_01']
@@ -396,7 +396,7 @@ def test_AssetSelect_intersection(metype):
 
 def test_AssetSelect_intersection_left_empty(metype):
     sub = 'subtitle'
-    expect = set([])
+    expect = set(['sub_eng', 'sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {})
     sel2 = AssetSelect(12, {sub: ['sub_eng', 'sub_por', 'sub_esp']})
     sel = sel1 & sel2
@@ -406,7 +406,7 @@ def test_AssetSelect_intersection_left_empty(metype):
 
 def test_AssetSelect_intersection_right_empty(metype):
     sub = 'subtitle'
-    expect = set([])
+    expect = set(['sub_eng', 'sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {sub: ['sub_eng', 'sub_por', 'sub_esp']})
     sel2 = AssetSelect(12, {})
     sel = sel1 & sel2
@@ -416,7 +416,7 @@ def test_AssetSelect_intersection_right_empty(metype):
 
 def test_AssetSelect_intersection_com_varios_tipos(metype):
     sub = 'subtitle'
-    expect = set(['sub_por', 'video_01'])
+    expect = set(['sub_por', 'video_01', 'audio_jpn', 'audio_eng'])
     arg1 = {
         sub: ['sub_eng', 'sub_por', 'sub_esp'],
         'video': ['video_01']
@@ -467,7 +467,7 @@ def test_AssetSelect_intersection_composta(metype):
 
 def test_AssetSelect_intersection_composta_left_empty(metype):
     sub = 'subtitle'
-    expect = set([])
+    expect = set(['sub_eng', 'sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {})
     sel2 = AssetSelect(12, {sub: ['sub_eng', 'sub_por', 'sub_esp']})
     sel = sel1
@@ -478,7 +478,7 @@ def test_AssetSelect_intersection_composta_left_empty(metype):
 
 def test_AssetSelect_intersection_composta_right_empty(metype):
     sub = 'subtitle'
-    expect = set([])
+    expect = set(['sub_eng', 'sub_por', 'sub_esp'])
     sel1 = AssetSelect(12, {sub: ['sub_eng', 'sub_por', 'sub_esp']})
     sel2 = AssetSelect(12, {})
     sel = sel1
@@ -489,7 +489,7 @@ def test_AssetSelect_intersection_composta_right_empty(metype):
 
 def test_AssetSelect_intersection_composta_com_varios_tipos(metype):
     sub = 'subtitle'
-    expect = set(['sub_por', 'video_01'])
+    expect = set(['sub_por', 'video_01', 'audio_jpn', 'audio_eng'])
     arg1 = {
         sub: ['sub_eng', 'sub_por', 'sub_esp'],
         'video': ['video_01']
