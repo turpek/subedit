@@ -1,8 +1,8 @@
-from subedit.interface import AssetAdapter, ITrack as Track, TrackAdapter, Asset
+from subedit.interface import AssetAdapter, TrackAdapter, Asset
 
 
 class Attachment(Asset):
-    def __init__(self, data: AssetAdapter):
+    def __init__(self, data: AssetAdapter, uuid=None):
         self.__id = data.id()
         self.__uid = data.uid()
         self.__content_type = data.content_type()
@@ -39,4 +39,3 @@ class BasicTrack(Asset):
 
     def file_name(self) -> str:
         return self.__file_name
-
