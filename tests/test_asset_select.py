@@ -17,6 +17,23 @@ def metype(mocker):
     return media_type
 
 
+@fixture
+def asset_filter(mocker):
+
+    def filter_by_lang(tracks, languages):
+        lang = languages if not isinstance(languages, str) else [languages]
+        return [track for track in tracks if track.language in lang]
+
+    filter_dict = mocker.patch.dict('subedit.assets.select.ASSET_FILTER', {
+        'subtitle_id': lambda tracks, ids: [track for track in tracks if track.id == ids],
+        'subtitle_lang': filter_by_lang,
+        'video_lang': filter_by_lang,
+        'audio_lang': filter_by_lang,
+        'track_lang': filter_by_lang,
+    })
+    return filter_dict
+
+
 def test_AssetSelect_get_empty():
     sub = 'subtitle'
     expect = []
@@ -655,4 +672,100 @@ def test_AssetSelect_selecionar_um_asset_especifico(metype):
     expect = set(['video'])
     sel = AssetSelect(12, ASSETS)
     result = set(sel(['video']).keys())
+    assert result == expect
+
+
+def test_AssetSelect_where_subtitle_por_id_vazio(metype, mocker, asset_filter):
+    expect = 0
+    subtitle_property = 'subtitle_id'
+    media_type = 'subtitle'
+
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = ['subtitle']
+    Mock = mocker.MagicMock
+    arg = {media_type: {Mock(), Mock(), Mock()}}
+    sel = AssetSelect(12, arg)
+    result = len(sel.where(subtitle_property, 3))
+    assert result == expect
+
+
+def test_AssetSelect_where_subtitle_por_id_nao_vazio(metype, mocker, asset_filter):
+    expect = 1
+    subtitle_property = 'subtitle_id'
+    media_type = 'subtitle'
+
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = ['subtitle']
+    Mock = mocker.MagicMock
+    sub = Mock()
+    sub.id = 3
+    arg = {media_type: {Mock(), Mock(), sub, Mock()}}
+    sel = AssetSelect(12, arg)
+    result = len(sel.where(subtitle_property, 3))
+    assert result == expect
+
+
+def test_AssetSelect_where_track_com_language_por(metype, mocker, asset_filter):
+    expect = 3
+    subtitle_property = 'track_lang'
+
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = ['subtitle', 'audio', 'video']
+    Mock = mocker.MagicMock
+
+    sub_pt1 = Mock()
+    sub_pt1.language = 'por'
+    sub_en = Mock()
+    sub_en.language = 'eng'
+    sub_jp = Mock()
+    sub_jp.language = 'jpn'
+    sub_pt2 = Mock()
+    sub_pt2.language = 'por'
+    aud_pt1 = Mock()
+    aud_pt1.language = 'por'
+    aud_jp = Mock()
+    aud_jp.language = 'jpn'
+    vid_jp = Mock()
+    vid_jp.langugae = 'jpn'
+
+    arg = {
+        'subtitle': {Mock(), Mock(), sub_pt1, sub_en, sub_jp, sub_pt2},
+        'video': {vid_jp, Mock()},
+        'audio': {aud_pt1, Mock(), Mock(), Mock(), aud_jp}
+    }
+    sel = AssetSelect(12, arg)
+    result = len(sel.where(subtitle_property, 'por'))
+    assert result == expect
+
+
+def test_AssetSelect_where_track_com_varias_language(metype, mocker, asset_filter):
+    expect = 6
+    subtitle_property = 'track_lang'
+
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = ['subtitle', 'audio', 'video']
+    Mock = mocker.MagicMock
+
+    sub_pt1 = Mock()
+    sub_pt1.language = 'por'
+    sub_en = Mock()
+    sub_en.language = 'eng'
+    sub_jp = Mock()
+    sub_jp.language = 'jpn'
+    sub_pt2 = Mock()
+    sub_pt2.language = 'por'
+    aud_pt1 = Mock()
+    aud_pt1.language = 'por'
+    aud_jp = Mock()
+    aud_jp.language = 'jpn'
+    vid_jp = Mock()
+    vid_jp.language = 'jpn'
+
+    arg = {
+        'subtitle': {Mock(), Mock(), sub_pt1, sub_en, sub_jp, sub_pt2},
+        'video': {vid_jp, Mock()},
+        'audio': {aud_pt1, Mock(), Mock(), Mock(), aud_jp}
+    }
+    sel = AssetSelect(12, arg)
+    result = len(sel.where(subtitle_property, ['por', 'jpn']))
     assert result == expect
