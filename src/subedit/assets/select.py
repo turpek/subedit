@@ -1,6 +1,8 @@
 from __future__ import annotations
-from subedit.media_enums import MediaType
+from subedit.media_enums import MediaType, BaseMediaProperty, expand_media_type
+from subedit.assets.asset_filter import ASSET_FILTER
 from operator import or_, and_, sub, xor
+from typing import Iterable
 
 
 class AssetSelect:
@@ -89,3 +91,10 @@ class AssetSelect:
 
     def keys(self):
         return self.__assets.keys()
+
+    def where(self, property: BaseMediaProperty, value: bool | str | int | Iterable[bool | str | int]):
+        assets = {}
+        filter = ASSET_FILTER[property]
+        for media_type in expand_media_type(property):
+            assets[media_type] = filter(self.get(media_type), value)
+        return AssetSelect(self.__uuid, assets)
