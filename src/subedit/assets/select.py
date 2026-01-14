@@ -74,6 +74,12 @@ class AssetSelect:
     def __getitem__(self, media_type: MediaType):
         return self.__assets[media_type]
 
+    def __len__(self) -> int:
+        size = 0
+        for asset in self.__assets.values():
+            size += len(asset)
+        return size
+
     def select(self, media_type) -> AssetSelect:
         assets = {media_type: self.get(media_type)}
         return AssetSelect(self.__uuid, assets)
