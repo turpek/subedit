@@ -1,4 +1,5 @@
 from subedit.media_enums import MediaType, MEDIA_EXPANSION, TrackProperty
+from subedit.media_enums import expand_media_type
 import pytest
 
 
@@ -27,3 +28,22 @@ def test_MediaType_expansion(key, value):
 
 def test_TrackProperty_members_values():
     assert TP_VALUES == {member.value for member in TrackProperty}
+
+
+def test_expand_media_type_com_audio():
+    expect = [MediaType.AUDIO]
+    result = expand_media_type(MediaType.AUDIO)
+    assert expect == result
+
+
+def test_expand_media_type_com_track():
+    expect = MediaType.TRACK.expand()
+    result = expand_media_type(MediaType.TRACK)
+    assert expect == result
+
+
+def test_expand_media_type_com_lista():
+    expect = MediaType.TRACK.expand()
+    expect.append(MediaType.ATTACHMENT)
+    result = expand_media_type([MediaType.TRACK, MediaType.AUDIO, MediaType.ATTACHMENT])
+    assert expect == result
