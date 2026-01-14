@@ -57,3 +57,13 @@ AudioProperty = build_track_property("AudioProperty")
 VideoProperty = build_track_property("VideoProperty")
 SubtitleProperty = build_track_property("SubtitleProperty")
 TrackProperty = build_track_property("TrackProperty")
+
+
+def expand_media_type(media_type: MediaType | list[MediaType]) -> list[MediaType]:
+    if isinstance(media_type, MediaType):
+        return media_type.expand()
+    expand_media = []
+    for type_ in media_type:
+        if type_ not in expand_media:
+            expand_media.extend(type_.expand())
+    return expand_media
