@@ -8,16 +8,6 @@ class AssetSelect:
         self.__assets = {key: asset for key, asset in assets.items() if asset}
         self.__uuid = uuid
 
-    def select(self, media_type) -> AssetSelect:
-        assets = {media_type: self.get(media_type)}
-        return AssetSelect(self.__uuid, assets)
-
-    def get(self, media_type: MediaType):
-        return self.__assets.get(media_type, [])
-
-    def keys(self):
-        return self.__assets.keys()
-
     def __check_operation(self, other: AssetSelect):
         if self.__uuid != other.__uuid:
             raise ValueError("Cannot combine objects that do not share the same origin")
@@ -83,3 +73,13 @@ class AssetSelect:
 
     def __getitem__(self, media_type: MediaType):
         return self.__assets[media_type]
+
+    def select(self, media_type) -> AssetSelect:
+        assets = {media_type: self.get(media_type)}
+        return AssetSelect(self.__uuid, assets)
+
+    def get(self, media_type: MediaType):
+        return self.__assets.get(media_type, [])
+
+    def keys(self):
+        return self.__assets.keys()
