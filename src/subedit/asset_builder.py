@@ -1,7 +1,9 @@
 from loguru import logger
 from subedit.adapter import AssetAdapter
 from subedit.assets.attachments import Asset
-from subedit.media_enums import MediaType
+from subedit.assets.select import AssetSelect
+from subedit.media_enums import MediaType, expand_media_type
+from typing import Iterable
 import uuid
 
 
@@ -48,3 +50,9 @@ class MKVMergeAssetBuilder:
 
     def get(self, media_type: MediaType):
         return self._assets.get(media_type, [])
+
+    def select(self, media_types: MediaType | Iterable[MediaType]):
+        assets = {}
+        for media_type in expand_media_type(media_types):
+            assets[media_type] = self._assets.get(media_type, set())
+        return AssetSelect(self.__uuid, assets)
