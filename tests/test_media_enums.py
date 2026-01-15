@@ -1,5 +1,5 @@
-from subedit.media_enums import MediaType, MEDIA_EXPANSION, TrackProperty
-from subedit.media_enums import expand_media_type
+from subedit.media_enums import MediaType, MEDIA_EXPANSION, TrackProperty, AudioProperty
+from subedit.media_enums import expand_media_type, resolve_media_type
 import pytest
 
 
@@ -46,4 +46,24 @@ def test_expand_media_type_com_lista():
     expect = MediaType.TRACK.expand()
     expect.append(MediaType.ATTACHMENT)
     result = expand_media_type([MediaType.TRACK, MediaType.AUDIO, MediaType.ATTACHMENT])
+    assert expect == result
+
+
+def test_media_property_to_media_type_concrete_property():
+    expect = MediaType.AUDIO
+    result = resolve_media_type(AudioProperty.ID)
+    assert expect == result
+
+
+def test_media_property_to_media_type_abstract_property():
+    expect = MediaType.TRACK
+    result = resolve_media_type(TrackProperty.ID)
+    assert expect == result
+
+
+def test_media_property_to_media_type_com_MediaProperty_desconhecida():
+    expect = "could not convert property '<class 'str'>' to 'MediaType'"
+    with pytest.raises(TypeError) as excinfo:
+        resolve_media_type('StrProperty')
+    result = str(excinfo.value)
     assert expect == result
