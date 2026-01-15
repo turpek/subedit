@@ -69,3 +69,18 @@ def expand_media_type(media_type: MediaType | list[MediaType]) -> list[MediaType
         if type_ not in expand_media:
             expand_media.extend(type_.expand())
     return expand_media
+
+
+MEDIA_PROP_TO_TYPE = {
+    TrackProperty: MediaType.TRACK,
+    AudioProperty: MediaType.AUDIO,
+    SubtitleProperty: MediaType.SUBTITLE,
+    VideoProperty: MediaType.VIDEO,
+}
+
+
+def resolve_media_type(prop: BaseMediaProperty) -> MediaType:
+    try:
+        return MEDIA_PROP_TO_TYPE[type(prop)]
+    except KeyError:
+        raise TypeError(f"could not convert property '{type(prop)}' to 'MediaType'")
