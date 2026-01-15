@@ -1,5 +1,5 @@
 from __future__ import annotations
-from subedit.media_enums import MediaType, BaseMediaProperty, expand_media_type
+from subedit.media_enums import MediaType, BaseMediaProperty, expand_media_type, resolve_media_type
 from subedit.assets.asset_filter import ASSET_FILTER
 from operator import or_, and_, sub, xor
 from typing import Iterable
@@ -65,12 +65,10 @@ class AssetSelect:
         self.__assets = self.__operator(other, xor)
         return self
 
-    def __call__(self, media_types: list[MediaType]):
-        assets = {
-            media_type: asset.copy()
-            for media_type, asset in self.__assets.items()
-            if media_type in media_types
-        }
+    def __call__(self, media_types: MediaType | Iterable[MediaType]):
+        assets = {}
+        for media_type in expand_media_type(media_types):
+            assets[media_type] = self.get(media_type).copy()
         return AssetSelect(self.__uuid, assets)
 
     def __getitem__(self, media_type: MediaType):
