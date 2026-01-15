@@ -92,9 +92,10 @@ class AssetSelect:
     def keys(self):
         return self.__assets.keys()
 
-    def where(self, property: BaseMediaProperty, value: bool | str | int | Iterable[bool | str | int]):
+    def where(self, prop: BaseMediaProperty, value: bool | str | int | Iterable[bool | str | int]):
         assets = {}
-        filter = ASSET_FILTER[property]
-        for media_type in expand_media_type(property):
+        filter = ASSET_FILTER[prop]
+        media_types = expand_media_type(resolve_media_type(prop))
+        for media_type in media_types:
             assets[media_type] = filter(self.get(media_type), value)
         return AssetSelect(self.__uuid, assets)
