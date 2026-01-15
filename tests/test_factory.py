@@ -1,6 +1,6 @@
 from pathlib3x import Path
 from pytest import fixture
-from subedit.factory import Factory, MKVMergeFactory
+from subedit.factory import AssetBuilderFactory, MKVMergeFactory
 from subedit.media_enums import MediaType, Provider
 from subprocess import PIPE
 
@@ -26,29 +26,29 @@ def mkvmerge_builder(mocker):
     return mocker.patch('subedit.factory.MKVMergeAssetBuilder')
 
 
-def test_Factory_build_mkvmerge_parse(mocker):
-    FakeFactory = mocker.MagicMock()
-    mocker.patch.dict(Factory._provider, {Provider.MKVMERGE: FakeFactory})
-    Factory.build_parse(Path('video.mkv'), Provider.MKVMERGE)
+def test_AssetBuilderFactory_build_mkvmerge_parse(mocker):
+    FakeAssetBuilderFactory = mocker.MagicMock()
+    mocker.patch.dict(AssetBuilderFactory._factory_map, {Provider.MKVMERGE: FakeAssetBuilderFactory})
+    AssetBuilderFactory.from_path(Path('video.mkv'), Provider.MKVMERGE)
 
 
-def test_Factory_build_mkvmerge_parse_build(mocker):
-    FakeFactory = mocker.MagicMock()
+def test_AssetBuilderFactory_build_mkvmerge_parse_build(mocker):
+    FakeAssetBuilderFactory = mocker.MagicMock()
     fake_factory = mocker.MagicMock()
-    FakeFactory.return_value = fake_factory
-    mocker.patch.dict(Factory._provider, {Provider.MKVMERGE: FakeFactory})
-    Factory.build_parse(Path('video.mkv'), Provider.MKVMERGE)
+    FakeAssetBuilderFactory.return_value = fake_factory
+    mocker.patch.dict(AssetBuilderFactory._factory_map, {Provider.MKVMERGE: FakeAssetBuilderFactory})
+    AssetBuilderFactory.from_path(Path('video.mkv'), Provider.MKVMERGE)
     fake_factory.build.assert_called()
 
 
-def test_Factory_build_return(mocker):
+def test_AssetBuilderFactory_build_return(mocker):
     expect = 'asset_builder'
-    FakeFactory = mocker.MagicMock()
+    FakeAssetBuilderFactory = mocker.MagicMock()
     fake_factory = mocker.MagicMock()
     fake_factory.build.return_value = expect
-    FakeFactory.return_value = fake_factory
-    mocker.patch.dict(Factory._provider, {Provider.MKVMERGE: FakeFactory})
-    result = Factory.build_parse(Path('video.mkv'), Provider.MKVMERGE)
+    FakeAssetBuilderFactory.return_value = fake_factory
+    mocker.patch.dict(AssetBuilderFactory._factory_map, {Provider.MKVMERGE: FakeAssetBuilderFactory})
+    result = AssetBuilderFactory.from_path(Path('video.mkv'), Provider.MKVMERGE)
     assert result == expect
 
 

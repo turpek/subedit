@@ -1,5 +1,5 @@
 from subedit.asset_builder import MKVMergeAssetBuilder
-from subedit.factory import Factory
+from subedit.factory import AssetBuilderFactory
 from subedit.media_enums import Provider
 from pathlib3x import Path
 from pytest import fixture
@@ -14,8 +14,8 @@ def mkvmerge_deps(mocker):
     }
 
 
-def test_integration_Factory(mkvmerge_deps):
+def test_integration_AssetBuilderFactory(mkvmerge_deps):
     reader = mkvmerge_deps['JSONReader']
     reader.read.return_value = MKVMERGE_DATA
-    asset_builder = Factory.build_parse(Path('video.mkv'), Provider.MKVMERGE)
+    asset_builder = AssetBuilderFactory.from_path(Path('video.mkv'), Provider.MKVMERGE)
     assert isinstance(asset_builder, MKVMergeAssetBuilder)

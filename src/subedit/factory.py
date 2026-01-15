@@ -26,12 +26,12 @@ class MKVMergeFactory:
         return builder
 
 
-class Factory:
-    _provider = {
+class AssetBuilderFactory:
+    _factory_map = {
         Provider.MKVMERGE: MKVMergeFactory,
     }
 
     @staticmethod
-    def build_parse(path: Path, provider: Provider):
-        factory = Factory._provider[provider](path)
+    def from_path(path: Path, provider: Provider):
+        factory = AssetBuilderFactory._factory_map[provider](path)
         return factory.build()
