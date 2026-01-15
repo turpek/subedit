@@ -49,8 +49,10 @@ class BaseMediaProperty(Enum):
     ...
 
 
-def build_track_property(name: str):
-    return Enum(name, COMMON_TRACK_PROPS, type=BaseMediaProperty)
+def build_track_property(name: str, **kwargs):
+    props = COMMON_TRACK_PROPS.copy()
+    props.update(kwargs)
+    return Enum(name, props, type=BaseMediaProperty)
 
 
 AudioProperty = build_track_property("AudioProperty")
