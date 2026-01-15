@@ -24,6 +24,7 @@ def asset_filter(mocker):
         lang = languages if not isinstance(languages, str) else [languages]
         return [track for track in tracks if track.language in lang]
 
+    mocker.patch('subedit.assets.select.resolve_media_type')
     filter_dict = mocker.patch.dict('subedit.assets.select.ASSET_FILTER', {
         'subtitle_id': lambda tracks, ids: [track for track in tracks if track.id == ids],
         'subtitle_lang': filter_by_lang,
@@ -88,25 +89,31 @@ def test_AssetSelect_get_video():
     assert result == expect
 
 
-def test_AssetSelect_select():
+def test_AssetSelect_select(mocker):
     sub = 'subtitle'
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = [sub]
     sel = AssetSelect(1, ASSETS)
     selector = sel.select(sub)
-    assert isinstance(selector, AssetSelect)
+    assert sub in selector.keys()
 
 
-def test_AssetSelect_select_empty():
+def test_AssetSelect_select_empty(mocker):
     sub = 'subtitle'
     expect = []
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = [sub]
     sel = AssetSelect(12, {})
     selector = sel.select(sub)
     result = selector.get(sub)
     assert result == expect
 
 
-def test_AssetSelect_select_subtitle(metype):
+def test_AssetSelect_select_subtitle(metype, mocker):
     sub = 'subtitle'
     expect = ASSETS[sub]
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = [sub]
     sel = AssetSelect(12, ASSETS)
     selector = sel.select(sub)
     result = selector.get(sub)
@@ -668,8 +675,10 @@ def test_AssetSelect_simmetric_difference_composta_com_varios_tipos(metype):
     assert result == expect
 
 
-def test_AssetSelect_selecionar_um_asset_especifico(metype):
+def test_AssetSelect_selecionar_um_asset_especifico(metype, mocker):
     expect = set(['video'])
+    expand_media = mocker.patch('subedit.assets.select.expand_media_type')
+    expand_media.return_value = ['video']
     sel = AssetSelect(12, ASSETS)
     result = set(sel(['video']).keys())
     assert result == expect
