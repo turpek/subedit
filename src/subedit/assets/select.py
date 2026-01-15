@@ -80,12 +80,14 @@ class AssetSelect:
             size += len(asset)
         return size
 
-    def select(self, media_type) -> AssetSelect:
-        assets = {media_type: self.get(media_type)}
-        return AssetSelect(self.__uuid, assets)
-
     def get(self, media_type: MediaType):
         return self.__assets.get(media_type, [])
+
+    def select(self, media_types: MediaType | Iterable[MediaType]) -> dict[MediaType: Iterable[Asset]]:  # noqa: F821
+        assets = {}
+        for media_type in expand_media_type(media_types):
+            assets[media_type] = self.get(media_type).copy()
+        return assets
 
     def keys(self):
         return self.__assets.keys()
